@@ -1,0 +1,831 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   SISTEMA VISUAL — «Atualização imagem gráfica / Guidelines» (14/08/2026)
+   reference/VIRATO update imagem_guidelines.pdf
+
+   Substitui o sistema «papel» (off-white quente + terracota) que esteve ao ar
+   entre 11/08 e 14/08. A divergência que a decisão 9 de
+   `decisions/2026-08-13-estrutura-lp-imobiliario-campanha.md` deixou por
+   resolver — «alguém tem de decidir qual dos dois é a identidade» — fica
+   resolvida pelas guidelines: a identidade é a paleta escura.
+
+   O que as guidelines fixam, e é o que está aqui:
+     · cinco cores e branco, sem mais nenhuma;
+     · quatro grafismos de gradiente — principal, secundário e dois
+       alternativos (um claro, um escuro de orbes);
+     · texto sobre fundo escuro a CINZA, com o branco reservado a pequenos
+       detalhes; texto sobre fundo claro a CINZA AZULADO.
+
+   O que as guidelines não fixam e foi derivado — está marcado DERIVADO em
+   cada sítio, com a razão. Nenhum valor derivado sai do eixo das cores da
+   paleta: são misturas do cinza com o branco, do roxo com o branco, e alfas
+   do azul noite.
+   ═══════════════════════════════════════════════════════════════════════ */
+:root{
+  /* ── a paleta, tal como vem ────────────────────────────────────────── */
+  --noite:#0b1220;      /* Azul Noite     — o chão da página          */
+  --petroleo:#142a44;   /* Azul Petróleo  — superfícies elevadas      */
+  --azulado:#33495d;    /* Cinza Azulado  — tinta sobre fundo claro   */
+  --roxo:#4d3368;       /* Roxo           — acento de marca           */
+  --cinza:#878e97;      /* Cinza          — texto sobre fundo escuro  */
+  --branco:#ffffff;
+
+  /* ── a escala de texto sobre escuro ────────────────────────────────────
+     DERIVADO. A paleta dá um cinza e uma página precisa de três degraus.
+     Os três estão no eixo do #878e97 — puxado ao branco para os títulos,
+     ao azul noite para o que é meta — e nenhum desce abaixo de 4,5:1 sobre
+     azul noite E sobre azul petróleo, que são os dois fundos onde há texto.
+     O #878e97 puro dá 5,7:1 sobre noite mas 4,4:1 sobre petróleo, e a maior
+     parte do corpo desta página vive dentro de cartões de petróleo — daí o
+     corpo ser o degrau imediatamente acima, e não o cinza cru. */
+  --texto:#D7DBE0;      /* títulos          · 12,9:1 noite · 9,9:1 petróleo */
+  --texto-2:#959CA5;    /* corpo            ·  6,8:1 noite · 5,2:1 petróleo */
+  --texto-3:#7E858F;    /* meta, rótulos    ·  5,1:1 noite — só sobre noite */
+  --texto-fraco:#4A5768;/* NÃO-TEXTO: filetes, algarismos grandes, inativo  */
+
+  /* ── o acento ─────────────────────────────────────────────────────────
+     O roxo entra nas guidelines como atmosfera dentro dos gradientes, nunca
+     como cor sólida de interface — e é assim que é usado aqui: o grafismo da
+     secção de posicionamento, o orbe da faixa de fecho, e depois os sinais
+     pequenos que marcam o que é reivindicação da Viriato (a linha «us», os
+     visto da coluna «sim», o glifo da FAQ, o anel de foco).
+
+     DERIVADO: --roxo-2. O #4d3368 sobre azul noite dá 2,0:1 — invisível.
+     Sobre fundo escuro o acento tem de ser o roxo puxado ao branco: 6,1:1
+     sobre noite, 4,7:1 sobre petróleo. O #4d3368 fica para o que assenta
+     sobre fundo claro, onde já tem 9,8:1 contra branco. */
+  --roxo-2:#A585BE;
+  --roxo-fundo:rgba(165,133,190,.10);
+  --roxo-linha:rgba(165,133,190,.34);
+
+  /* ── grafismo · gradiente principal ───────────────────────────────────
+     Azul noite a abrir, um banco de aço-petróleo a entrar por um canto alto.
+     Os valores do bloom são amostrados da própria prancha (#425f6d, #264c61);
+     as âncoras escuras são as da paleta. */
+  --grad-principal:
+    radial-gradient(120% 92% at 84% 16%, rgba(66,95,109,.72) 0%, rgba(38,76,97,.30) 40%, transparent 74%),
+    radial-gradient(96% 74% at 26% 66%, rgba(38,76,97,.34) 0%, transparent 68%),
+    linear-gradient(158deg, #101f33 0%, var(--noite) 56%, #070d18 100%);
+
+  /* ── grafismo · gradiente secundário ──────────────────────────────────
+     O mesmo banco de aço, e o roxo a subir do canto inferior direito. É o
+     único sítio da página onde o roxo ocupa área a sério. */
+  --grad-secundario:
+    radial-gradient(78% 92% at 90% 94%, rgba(101,51,114,.82) 0%, rgba(77,51,104,.40) 36%, transparent 72%),
+    radial-gradient(92% 82% at 80% 20%, rgba(76,110,117,.46) 0%, transparent 68%),
+    radial-gradient(72% 62% at 42% 58%, rgba(53,86,104,.34) 0%, transparent 72%),
+    linear-gradient(140deg, #010a1b 0%, var(--noite) 58%, var(--petroleo) 100%);
+
+  /* ── grafismo · gradiente alternativo claro ───────────────────────────
+     Aqua em baixo à esquerda, clarão branco a meio, lavanda à direita. */
+  --grad-claro:
+    radial-gradient(66% 78% at 24% 32%, #ffffff 0%, rgba(255,255,255,0) 60%),
+    radial-gradient(86% 96% at 6% 98%, #a2e5eb 0%, rgba(162,229,235,0) 64%),
+    radial-gradient(92% 100% at 97% 76%, #bfbadb 0%, rgba(191,186,219,0) 66%),
+    linear-gradient(112deg, #eaf7fa 0%, #e6e6f5 100%);
+
+  /* ── grafismo · gradiente alternativo escuro (orbes) ──────────────────
+     Dois orbes desfocados — um roxo, um aço — sobre noite/petróleo. */
+  --grad-orbes:
+    radial-gradient(58% 112% at 32% 58%, rgba(77,51,104,.88) 0%, rgba(77,51,104,0) 66%),
+    radial-gradient(50% 98% at 70% 34%, rgba(51,73,93,.82) 0%, rgba(51,73,93,0) 64%),
+    linear-gradient(96deg, var(--petroleo) 0%, #0b1320 66%);
+
+  /* ── fundos e superfícies ─────────────────────────────────────────────
+     Um só chão, como no sistema anterior: as secções não alternam faixas de
+     cor, o ritmo vem do espaço e da elevação. O que mudou é que agora há
+     três momentos de grafismo — posicionamento, formulário, fecho — e são
+     eles a marcar o compasso, não bandas de fundo. */
+  --fundo:var(--noite);--fundo-alt:var(--noite);
+  --fundo-eleva:var(--petroleo);
+  --sobre-img:#FFFFFF;--sobre-img-2:rgba(255,255,255,.78);--linha-img:rgba(255,255,255,.34);
+
+  /* Sem filetes a dividir a página — igual ao sistema anterior. --linha e
+     --linha-forte sobrevivem para o contorno do botão secundário e o bordo
+     de vidro do header, que são material do componente. Agora saem do cinza
+     azulado, que é a cor que as guidelines dão a esse trabalho. */
+  --linha:rgba(51,73,93,.46);--linha-forte:rgba(215,219,224,.26);--linha-tinta:rgba(215,219,224,.50);
+
+  --halo-img:0 1px 1px rgba(7,13,24,.80),0 2px 10px rgba(7,13,24,.74),0 4px 34px rgba(7,13,24,.60);
+  --halo-hero:0 1px 2px rgba(7,13,24,.40),0 2px 14px rgba(7,13,24,.42),0 6px 48px rgba(7,13,24,.36);
+  /* a lavagem que assenta a fotografia na paleta: o render passa a ter o
+     azul da marca por baixo em vez de ficar a flutuar por cima dela */
+  --tinta-hero:rgba(11,18,32,.16);
+  --cor-hero:rgba(20,42,68,.24);
+  --veu-hero:
+    radial-gradient(ellipse 150% 128% at 50% 100%,
+      rgba(11,18,32,.82) 0%,rgba(11,18,32,.52) 34%,rgba(11,18,32,.22) 60%,transparent 88%),
+    linear-gradient(to top,
+      rgba(11,18,32,.58) 0%,rgba(11,18,32,.28) 34%,transparent 74%);
+  /* proxy fotográfico enquanto não há média — agora frio, não beige */
+  --foto:linear-gradient(152deg,#2A3F52 0%,#1B2E44 46%,#0C1524 100%);
+
+  /* Sobre escuro a elevação vem quase toda do salto noite → petróleo e do
+     brilho de 1px no topo da superfície — a sombra é só o assentamento.
+     Baixadas a cerca de metade (14/08): a esta profundidade abriam poças
+     escuras à volta dos cartões, e num chão que já é quase preto isso lê-se
+     como sujidade e não como altura. O que separa o cartão do fundo continua
+     a ser --luz-topo, que não mexeu. */
+  --sombra-1:0 1px 2px rgba(4,8,15,.20);
+  --sombra-2:0 1px 4px rgba(4,8,15,.16),0 8px 20px rgba(4,8,15,.20);
+  --sombra-3:0 12px 32px rgba(4,8,15,.28);
+  --luz-topo:inset 0 1px 0 rgba(215,219,224,.07);
+  --vidro:rgba(20,42,68,.62);--vidro-linha:rgba(215,219,224,.14);
+
+  --max:1240px;--r:16px;--r-sm:10px;
+  --ease-out:cubic-bezier(.23,1,.32,1);
+  --ease-in-out:cubic-bezier(.77,0,.175,1);
+}
+
+/* ── secção clara ───────────────────────────────────────────────────────
+   O gradiente alternativo claro, aplicado ao momento de conversão. Não é
+   decoração: é o único sítio da página onde se pede alguma coisa, e as
+   guidelines dão-lhe um grafismo próprio. Tudo o que muda são tokens — o
+   markup lá dentro é o mesmo da versão escura.
+
+   Sobre fundo claro a regra das guidelines é explícita: cinza azulado. */
+.sec-claro{
+  background:var(--grad-claro);
+  --texto:#22374A;      /* azulado escurecido — títulos · 10,9:1 sobre o clarão */
+  --texto-2:var(--azulado);
+  /* Não um cinza azulado aclarado: sobre a zona lavanda do gradiente (#bfbadb)
+     um #4F6377 cai para 3,3:1. O cinza azulado da paleta, cru, dá 5,0:1 no
+     ponto pior da secção — e a hierarquia do rótulo vem do tamanho. */
+  --texto-3:var(--azulado);
+  --texto-fraco:#93A3B1;
+  --fundo-eleva:rgba(255,255,255,.86);
+  --linha:rgba(51,73,93,.16);--linha-forte:rgba(51,73,93,.30);--linha-tinta:rgba(51,73,93,.50);
+  --roxo-2:var(--roxo);
+  --roxo-fundo:rgba(77,51,104,.08);
+  --roxo-linha:rgba(77,51,104,.30);
+  --sombra-1:0 1px 2px rgba(34,55,74,.06);
+  --sombra-2:0 2px 8px rgba(34,55,74,.07),0 12px 28px rgba(34,55,74,.08);
+  --luz-topo:inset 0 1px 0 rgba(255,255,255,.75);
+  color:var(--texto);
+}
+
+/* ── secção com grafismo secundário ─────────────────────────────────────
+   O posicionamento é a reivindicação comercial da empresa inteira, e é a
+   única secção que ganha grafismo escuro. O roxo aparece aqui e no fecho,
+   e mais lado nenhum — é o que as guidelines fazem com ele. */
+.sec-grafismo{background:var(--grad-secundario)}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:96px}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto !important}
+.lenis.lenis-smooth [data-lenis-prevent]{overscroll-behavior:contain}
+.lenis.lenis-stopped{overflow:hidden}
+/* O gradiente PRINCIPAL é o chão da página, não um enfeite de uma secção.
+   Fixo ao ecrã: à medida que se desce, o banco de aço-petróleo fica onde
+   está e as secções passam-lhe por cima — lê-se como uma fonte de luz na
+   sala, e não como uma faixa que passa. As secções que têm grafismo próprio
+   (posicionamento, formulário, faixa de fecho) pintam por cima dele.
+
+   Pseudo-elemento fixo em vez de `background-attachment:fixed`: o segundo é
+   caro a compor e comporta-se mal no iOS. O azul noite fica no <html> por
+   baixo de tudo, para que o pior caso continue a ser a cor da paleta. */
+html{background:var(--noite)}
+body{background:transparent;color:var(--texto);font-family:'DM Sans',-apple-system,BlinkMacSystemFont,sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:var(--grad-principal);pointer-events:none}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 28px}
+h1,h2,h3,h4{line-height:1.08;font-weight:500;letter-spacing:-.026em}
+h1{font-size:clamp(2.4rem,6vw,4.6rem);font-weight:400}
+h2{font-size:clamp(1.9rem,4.2vw,3.1rem)}
+h3{font-size:1.15rem;font-weight:500;letter-spacing:-.01em}
+p{color:var(--texto-2)}
+a{color:inherit;text-decoration:none}
+/* A link inside running copy. There is exactly one on each page — the line at
+   the bottom of «This is not» that sends the wrong audience to the other
+   landing — and stripped of colour and underline it read as a full stop. The
+   whole point of that line is that it is a door: it has to look like one. */
+.qcol a,.faq .ans a{color:var(--roxo-2);text-decoration:underline;
+  text-underline-offset:3px;text-decoration-thickness:1px;
+  transition:opacity 200ms ease}
+.qcol a:hover,.faq .ans a:hover{opacity:.72}
+
+/* placeholders — none of these may reach production */
+/* --texto-2 e não --texto-3: estes marcadores caem dentro de cartões de
+   petróleo (FAQ, qualificação), onde o terceiro degrau dá 3,9:1. */
+.ph{color:var(--texto-2);border-bottom:1px dashed var(--texto-fraco);font-style:normal}
+.phbox.tem-media{background:none;border:0;padding:0;color:transparent;overflow:hidden}
+.phbox.tem-media>*{width:100%;height:100%;display:block}
+.phbox img,.phbox video{width:100%;height:100%;object-fit:cover;display:block}
+/* Os vídeos de cartão cortavam do gradiente de proxy fotográfico para o
+   primeiro frame. Vê-se sobretudo no cartão do site, que não leva poster de
+   propósito — o poster teria de ser o frame 0 extraído à mão e não há. Isto
+   não é enfeite: é a emenda de um salto. Fica também em reduced-motion, por
+   ser precisamente aquilo que a preferência quer — menos sobressalto. */
+.phbox video.a-entrar{opacity:0;transition:opacity 300ms var(--ease-out)}
+.phbox video.a-entrar.pronto{opacity:1}
+.phbox{
+  background:
+    repeating-linear-gradient(135deg,rgba(255,255,255,.05) 0 14px,transparent 14px 28px),
+    var(--foto);
+  border:0;
+  display:grid;place-items:center;color:rgba(255,255,255,.5);
+  font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;text-align:center;padding:16px;
+}
+.hero .wrap,.cbody{color:var(--sobre-img)}
+.hero .ph,.cbody .ph{color:var(--sobre-img);border-bottom-color:var(--linha-img)}
+
+/* ── header ─────────────────────────────────────────────────────────────
+   LP-ONLY. The sector page carries five menu items; this one carries none.
+   A campaign page has a single path, and every link that isn't the CTA is
+   a way off it. What's left is the mark (trust) and the two actions. */
+header{
+  position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:200;
+  width:calc(100% - 36px);max-width:1180px;border-radius:100px;
+  background:var(--vidro);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+  border:1px solid var(--vidro-linha);
+  box-shadow:
+    var(--luz-topo),
+    var(--sombra-1),
+    0 8px 22px rgba(4,8,15,.18);
+}
+header .wrap{max-width:none;padding:0 10px 0 26px}
+.nav{display:flex;align-items:center;justify-content:space-between;height:58px}
+/* ── o sinal ─────────────────────────────────────────────────────────────
+   O monograma substitui o wordmark. Duas correções ao ficheiro tal como veio:
+
+   1. O `viewBox` declarado era `0 0 126 126`, mas o desenho vai até y=131 — a
+      caixa é cinco unidades mais curta do que a arte. Como o agente do
+      utilizador põe `overflow:hidden` nos <svg> em linha, o pé do traço
+      descendente saía cortado (~4% do sinal). O viewBox passa a ser a caixa
+      real do desenho, medida: `0.2 0.1 125.5 130.9`. Não mexe num único ponto
+      do path — só deixa de o cortar — e de caminho tira a margem morta, o que
+      faz o sinal ocupar de facto a altura que lhe damos.
+   2. `fill:currentColor` em vez do preto implícito, para herdar a cor do texto
+      e funcionar tanto sobre escuro como dentro da secção clara.
+
+   Não leva texto ao lado, por isso o nome passa a viver no `aria-label`: sem
+   ele o cabeçalho ficava sem nome acessível nenhum, que é o que acontece
+   sempre que se troca um wordmark por um sinal e se esquece esta linha. */
+.logo{display:flex;align-items:center;color:var(--texto);flex:none}
+.logo svg{display:block;height:27px;width:auto}
+.navr{display:flex;align-items:center;gap:8px}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:100px;font-size:.85rem;font-weight:500;border:1px solid transparent;cursor:pointer;font-family:inherit;white-space:nowrap;flex:none;
+  transition:transform 160ms var(--ease-out),border-color 200ms ease,background-color 200ms ease,filter 200ms ease,box-shadow 240ms ease}
+.btn:active{transform:scale(.97)}
+/* Sobre azul noite o botão primário é a pastilha branca: é o maior contraste
+   que a paleta permite (17,7:1) e é o que as guidelines chamam «pequenos
+   detalhes a branco». Dentro da secção clara inverte-se — noite sobre claro. */
+.btn-p{background:var(--branco);color:var(--noite)}
+.btn-p:hover{background:#E8EBEF;box-shadow:var(--sombra-2)}
+.sec-claro .btn-p{background:var(--noite);color:var(--branco)}
+.sec-claro .btn-p:hover{background:#16233A}
+.btn-s{border-color:var(--linha-forte);color:var(--texto)}
+.btn-s:hover{border-color:var(--linha-tinta);background-color:rgba(215,219,224,.08)}
+.btn-sm{padding:8px 16px;font-size:.8rem}
+/* WhatsApp is the primary action everywhere it appears. Under the papel system
+   it carried the one chromatic accent; under the guidelines it can't. The roxo
+   is the only chromatic colour in the palette and on azul noite it sits at
+   2,0:1 — a button nobody sees. So the roles split: BRANCO does conversion,
+   ROXO does brand (the positioning graphic, the closing orbs, the «us» line,
+   the ticks, the FAQ glyph, the focus ring). That is also how the guidelines
+   themselves spend the roxo — as atmosphere inside a gradient, never as a
+   solid interface colour.
+
+   The glyph stays inline SVG — an emoji would render green on one platform
+   and flat grey on another, and this button is the campaign's main conversion. */
+.btn-wa{background:var(--branco);color:var(--noite)}
+.btn-wa:hover{background:#E8EBEF;box-shadow:var(--sombra-2)}
+.btn-wa svg{width:15px;height:15px;fill:currentColor;flex:none}
+
+/* ── hero ───────────────────────────────────────────────────────────── */
+.hero{position:relative;height:min(94vh,880px);min-height:600px;
+  display:flex;align-items:center;justify-content:center}
+.hero .bg{position:absolute;inset:0}
+.hero .bg .phbox{width:100%;height:100%;border:0;font-size:.72rem}
+.hero .bg::after{content:'';position:absolute;inset:0;
+  background:linear-gradient(var(--cor-hero),var(--cor-hero)),var(--tinta-hero);pointer-events:none}
+/* LP-ONLY: the sector hero has no veil — its title carries itself over a
+   picture we chose. This one sits above a subtitle and two buttons, so the
+   bottom half needs to darken or the secondary button disappears into a sky. */
+.hero .veil{position:absolute;inset:0;background:var(--veu-hero);pointer-events:none}
+.hero .wrap{position:relative;z-index:3;text-align:center;
+  width:calc(100% - 36px);max-width:1180px;margin:0 auto;padding:0 27px}
+.hero h1{font-size:clamp(2.4rem,6.2vw,5.1rem);font-weight:400;line-height:1.05;letter-spacing:-.02em;
+  max-width:19ch;margin:0 auto;text-shadow:var(--halo-hero);
+  /* cinza, não branco. As guidelines reservam o branco a pequenos detalhes e
+     põem o texto sobre fundo escuro a cinza — é o que a própria prancha faz
+     com «BUILT ON TRUST.». Com o véu por baixo e o halo por cima isto lê a
+     12,9:1 sobre o ponto mais claro do filme, por isso não custa nada. */
+  color:var(--texto)}
+/* ── tira de serviços ────────────────────────────────────────────────────
+   LP-ONLY. Substitui o subtítulo. Sete serviços são uma lista, não uma frase,
+   por isso levam o tratamento dos rótulos da página — versaletes com tracking
+   — e não o do corpo: à primeira passagem de olhos tem de se ler como um
+   inventário de capacidades e não como prosa a continuar o título.
+
+   Sem pastilhas. Os dois CTA logo abaixo já são pastilhas, e uma terceira
+   fila de formas arredondadas por cima deles fazia o hero parecer uma barra
+   de ferramentas.
+
+   E sem separador nenhum — nem ponto médio, nem filete. Uma tira de sete
+   itens dobra, e num separador desenhado por `::after` a linha que quebra
+   fica com um sinal pendurado na ponta, que não há CSS que apague (a folha
+   não sabe onde é que a linha vai partir). Com sete itens a 1240px isso
+   acontece a partir dos ~1100px, ou seja quase sempre.
+
+   O que separa passa a ser o espaço: 30px entre itens contra ~4px de espaço
+   entre palavras dentro de um item. É uma diferença de sete vezes, e com as
+   versaletes por cima não há como ler «PERFORMANCE MARKETING» como duas
+   entradas. Menos marcas, e dobra em qualquer largura sem sobras. */
+.hero-svc{
+  list-style:none;margin:24px auto 0;
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;
+  gap:11px 30px;
+  font-size:.76rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--texto);text-shadow:var(--halo-hero)}
+.hero-svc li{white-space:nowrap}
+.hero .ctas{margin-top:30px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+/* Over photography the secondary button needs a light border, not the page's
+   ink border — the dark one vanishes against a dark frame. */
+.hero .btn-s{border-color:var(--linha-img);color:var(--sobre-img);
+  -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.hero .btn-s:hover{border-color:var(--sobre-img);background-color:rgba(255,255,255,.12)}
+
+.hero .scroll-cue{
+  display:none;position:absolute;z-index:3;left:50%;bottom:26px;transform:translateX(-50%);
+  flex-direction:column;align-items:center;gap:10px;
+  color:var(--sobre-img);text-shadow:var(--halo-hero);
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:500;
+  text-decoration:none;padding:6px 10px;
+}
+.hero .scroll-cue .rail{position:relative;width:1px;height:38px;background:rgba(255,255,255,.5);overflow:hidden;
+  box-shadow:0 0 12px rgba(11,18,32,.60)}
+.hero .scroll-cue .rail::after{content:'';position:absolute;left:0;width:1px;height:14px;
+  background:var(--sobre-img);animation:cue 2.1s var(--ease-out) infinite}
+@keyframes cue{0%{top:-14px}55%,100%{top:38px}}
+@media (min-width:1200px){
+  .hero{height:100vh;height:100dvh}
+  .hero .scroll-cue{display:flex}
+}
+
+/* ── entrada do hero ─────────────────────────────────────────────────────
+   Os 700ms passam o orçamento de 300ms da UI, e é de propósito: isto é o
+   momento de marketing da página, não um controlo. O filme estabelece-se
+   primeiro e o texto pousa por cima. É a única coisa aqui que existe só para
+   dar sensação, e é onde o orçamento de encanto deve ser gasto.
+
+   Só opacity e transform, e os CTA continuam clicáveis desde o primeiro
+   frame: opacity:0 não bloqueia cliques e não se toca em pointer-events.
+   Tudo pende do `.js` posto no <head> — sem script, nada disto se esconde. */
+.js .hero .wrap>*{
+  opacity:0;transform:translateY(12px);
+  transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out)}
+.js .hero.pronto .wrap>*{opacity:1;transform:none}
+/* escada curta — 90ms. Mais do que isto lê-se como três animações em fila
+   em vez de uma frase a assentar */
+.js .hero .wrap>*:nth-child(2){transition-delay:90ms}
+.js .hero .wrap>*:nth-child(3){transition-delay:180ms}
+/* o indicador não leva translate: o transform dele é o translateX(-50%) que o
+   centra, e sobrepor-lhe um translateY tirava-o do meio */
+.js .hero .scroll-cue{opacity:0;transition:opacity 700ms var(--ease-out) 340ms}
+.js .hero.pronto .scroll-cue{opacity:1}
+
+/* ── sections ───────────────────────────────────────────────────────── */
+section{position:relative}
+.sec{padding:92px 0}
+.sec.tight{padding:64px 0}
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:36px;margin-bottom:38px}
+.shead p{max-width:58ch;margin-top:12px;font-size:1.02rem}
+/* Section heads run on the page's centre axis — eyebrow, heading and lead
+   paragraph stacked on the middle, and the carousel arrows below them instead
+   of out at the right edge. The cap keeps a centred heading from running the
+   full width, where the second line has no left edge to return to.
+
+   The form is the exception, and stays as it was: it is two columns, and a
+   centred label over a full-width field loses the line that tells the eye
+   where the next one starts. The card grids under the heads keep their own
+   alignment too — a ✓ list and a FAQ row are read down an edge. */
+.sec:not(.contact) .shead{flex-direction:column;align-items:center;text-align:center;gap:22px}
+.sec:not(.contact) .shead>div{max-width:min(100%,62ch)}
+.sec:not(.contact) .shead p{margin-left:auto;margin-right:auto}
+/* the closing band follows the same axis: title over the pair, not beside it */
+.num{font-size:.7rem;letter-spacing:.16em;color:var(--texto-3);font-weight:600;display:block;margin-bottom:14px}
+.eyebrow{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--texto-3);font-weight:600;margin-bottom:14px}
+
+/* ── work carousel ──────────────────────────────────────────────────── */
+.cases{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain}
+.cases::-webkit-scrollbar{display:none}
+/* LP-ONLY: two-up on desktop instead of the sector page's full-width one-up.
+   Nothing here links anywhere — with no case pages to open, a full-width card
+   is a lot of screen spent on a picture the visitor can't act on. Two shows
+   range, which is the actual argument, and keeps the form closer. */
+.case{position:relative;flex:0 0 calc(50% - 8px);scroll-snap-align:start;scroll-snap-stop:always;
+  aspect-ratio:16/10;border-radius:var(--r);overflow:hidden;display:block}
+.case .phbox{position:absolute;inset:0;border:0}
+.case[data-tipo="visitas"] .phbox video{transform:scale(1.04)}
+/* LP-ONLY. The sector page leaves its cards unveiled and defends the caption
+   with the halo alone — but its cards are full-width with display-size titles.
+   These are half-width with small type, and a white render behind a white
+   caption beats three layers of shadow: "Cristelo · Farimóvel" over Natura
+   Village was unreadable. A scrim from the bottom edge, tall enough for two
+   lines and no taller, leaves the top two-thirds of the photograph untouched. */
+.case::after{content:'';position:absolute;left:0;right:0;bottom:0;height:56%;z-index:1;
+  background:linear-gradient(to top,rgba(11,18,32,.78) 0%,rgba(11,18,32,.36) 44%,transparent 100%);
+  pointer-events:none}
+/* with the scrim carrying the contrast, the halo drops to one layer — it is
+   back to doing what it is for, which is contour, not legibility */
+.cbody{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:28px 30px;max-width:56ch;
+  text-shadow:0 1px 2px rgba(11,18,32,.60)}
+.cbody .cmeta,.cbody .csep{color:rgba(255,255,255,.90)}
+.cbody h3{font-size:clamp(1.15rem,2vw,1.6rem);margin-bottom:6px}
+.cmeta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-size:.84rem;color:var(--sobre-img-2)}
+.csep{color:var(--sobre-img-2)}
+.sheadr{display:flex;align-items:center;gap:12px;flex:none}
+.cnav{display:flex;gap:8px}
+.cbtn{width:40px;height:40px;flex:none;border-radius:50%;border:1px solid var(--linha-forte);background:none;color:var(--texto);font:inherit;font-size:.95rem;cursor:pointer;
+  transition:transform 160ms var(--ease-out),border-color 200ms ease,color 200ms ease,background-color 200ms ease,opacity 200ms ease}
+.cbtn:hover{border-color:var(--roxo-2);color:var(--roxo-2);background-color:var(--roxo-fundo)}
+.cbtn:active{transform:scale(.92)}
+/* Nas pontas do carrossel a seta não fazia nada e continuava a parecer que
+   fazia. Passa a dizê-lo: um clique morto é pior do que um botão apagado. */
+.cbtn:disabled{opacity:.3;pointer-events:none}
+
+/* ── the image-led treatment ─────────────────────────────────────────
+   Built for the architects' page, after The Boundary, Momentum and Mino, and
+   since 17/08 used by BOTH pages: the band and the numbered index are shared,
+   and what tells the two apart is the order of the sections and the words in
+   them. All three references are studio homepages and these are campaign
+   landing pages, so what carries over is the composition and not the whole
+   model. What does not carry over is the form. Their job is reputation; these
+   pages' job is an enquiry.
+
+   The rail goes one-up and near-bleed. The two-up below was argued for on the
+   grounds that range matters more than size when the picture is not the
+   product; that argument lost on both pages. Nobody judges whether the light
+   is right at 384px, and six developments shown large are the best thing
+   either page has. ⚠️ The two-up rules further down are now dead on both — left
+   in place because `.cases` without `.grande` is still the fallback if a
+   variant ever omits the flag. */
+/* The band. Edge to edge, one card centred with its neighbours showing on both
+   sides, and the middle one scaled past them rather than boxed beside them.
+
+   The geometry is one variable: `--carta` is the card's share of the viewport,
+   and the track's side padding is whatever is left over, halved — which is what
+   lets the FIRST card sit in the middle with empty space to its left, instead
+   of starting flush and only ever showing what comes next. `scroll-snap-align:
+   center` then settles every card on the same axis.
+
+   Everything is in vw and not %, deliberately: a percentage flex-basis resolves
+   against the track's content box, which this padding has just changed, and the
+   two would chase each other. */
+.obra-grande .cases{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+/* Snap is off here and the settling is done in JS. Everything that moves this
+   band ends in a scrollTo — release, click, wheel, and the jump that makes it
+   cycle — and mandatory snap spent its time pulling against all four. */
+.cases.grande{--carta:56vw;gap:22px;
+  padding-inline:calc((100vw - var(--carta))/2);
+  cursor:grab;scroll-snap-type:none}
+.cases.grande .case{flex:0 0 var(--carta);aspect-ratio:16/9;cursor:pointer;
+  transition:transform 460ms var(--ease-out),opacity 460ms var(--ease-out)}
+/* the centre card is where you already are — only the others invite a click */
+.cases.grande .case.no-centro{cursor:grab}
+/* Off-centre cards sit back and dim; the centre one comes forward over them.
+   The scale is the overlap — the layout box never changes, so the neighbours
+   stay exactly where they are and the middle card grows across them. */
+.cases.grande .case{transform:scale(.92);opacity:.55;z-index:1}
+.cases.grande .case.no-centro{transform:scale(1.06);opacity:1;z-index:3}
+.cases.grande .cbody{padding:40px 44px;max-width:64ch;
+  opacity:0;transition:opacity 300ms var(--ease-out)}
+/* The caption belongs to the card being looked at. On the dimmed ones it is
+   three names competing for the same glance. */
+.cases.grande .case.no-centro .cbody{opacity:1}
+.cases.grande .cbody h3{font-size:clamp(1.4rem,2.4vw,2.1rem);margin-bottom:10px}
+.cases.grande .cmeta{font-size:.92rem}
+/* Dragging a picture is the browser's default and it is not what is wanted
+   here: the ghost image follows the cursor and the band stops moving. */
+.cases.grande img,.cases.grande video{user-select:none;-webkit-user-drag:none}
+/* Only while the hand is down: a drag that crosses a caption would otherwise
+   select it, and the band ends up towing a blue highlight. Outside the drag the
+   text stays selectable, which is how a caption should behave. */
+.cases.grande.a-arrastar{cursor:grabbing;user-select:none}
+/* The transition stays ON during a drag, and that is the point: nothing changes
+   class while the hand is down, so nothing animates — and the moment it lets go
+   the new centre card grows into place over the same 460ms as the scroll that
+   brings it there. The two land together. */
+
+/* On a phone "big" means tall, not wide: 16/9 at this width is a letterbox,
+   which is the opposite of the point. The card also takes most of the screen —
+   there is no room for two neighbours — so the band becomes a peek. These
+   classes outrank the breakpoint further down, so this has to be restated. */
+@media(max-width:1000px){
+  .cases.grande{--carta:78vw;gap:14px}
+  .cases.grande .case{aspect-ratio:3/4;transform:scale(.96)}
+  .cases.grande .case.no-centro{transform:scale(1)}
+  .cases.grande .cbody{padding:24px 22px;max-width:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .cases.grande .case,.cases.grande .cbody{transition:none}
+}
+.obra-nota{margin:-22px 0 30px;text-align:center;font-size:.84rem}
+
+/* Services as an index, not as four paragraphs: number, name, one line. The
+   picture is taller than the promoters' 16:9 because a portrait crop is what
+   an interior actually is, and because a taller card is a bigger picture. */
+/* No grid-template-columns here on purpose: `.comps` already declares three
+   up, and re-declaring it at two classes of specificity would outrank the
+   breakpoints below and leave the phone with three columns. */
+.comps.numerado{gap:20px}
+.comps.numerado .compc{background:none;box-shadow:none;border-radius:0}
+.comps.numerado .thumb{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden}
+.comps.numerado .body{padding:18px 2px 0}
+.comps.numerado h3{font-size:1.28rem;margin-bottom:6px}
+.comps.numerado p{font-size:.92rem;max-width:34ch}
+.cnum{display:block;font-size:.72rem;letter-spacing:.14em;color:var(--texto-3);
+  font-variant-numeric:tabular-nums;margin-bottom:10px}
+/* Without a card behind it the CTA has no floor to sit on, and pinning it to
+   the bottom of a body that is now only three lines tall just floats it. It
+   follows the copy. */
+.comps.numerado .ccta{margin-top:12px;padding-top:0}
+
+/* A hero that trusts the film: the headline is the category, at display size
+   and held to a measure, with the service strip carrying the range underneath.
+   `.hero-lead` below is unused while that is the arrangement — it is the style
+   for a prose subtitle, kept because the promoters' page may yet want one. */
+/* 18ch stacks «Architectural / Visualisation» as two lines of near-equal
+   length, which is what makes a two-word headline read as a mark rather than
+   as a sentence that ran out. It also keeps a longer line, should this variant
+   get one back, off a three-way break. */
+.hero.calmo h1{font-size:clamp(2.6rem,6.4vw,5.2rem);letter-spacing:-.035em;
+  max-width:18ch;margin-left:auto;margin-right:auto}
+.hero-lead{margin:22px auto 0;max-width:46ch;font-size:1.02rem;
+  color:var(--sobre-img);text-shadow:var(--halo-hero)}
+
+/* Process as a strip of four labels rather than four explanations. Columns are
+   left to `.steps` for the same reason as `.comps.numerado` above. */
+.steps.linha .step{padding-top:0}
+.steps.linha .num{font-size:.72rem;font-weight:600;letter-spacing:.14em;
+  color:var(--texto-3);margin-bottom:8px}
+.steps.linha h3{font-size:1.02rem}
+
+/* ── what's included ─────────────────────────────────────────────────
+   The six components, as a grid rather than six carousels. Search brings
+   people here on component words — "architectural visualisation", "3d
+   rendering services" — so the components have to be visible and named in
+   that language. But this is a landing page: they're the entry, not the
+   argument, and six more rails would bury the form.
+
+   Three up, two rows. At six cards a single row gives each one ~180px of
+   body width, which is two or three words a line; 3×2 keeps the card wide
+   enough for the sentence under the title to read as a sentence. */
+.comps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+/* Sem filete, o cartão passa a existir só pela superfície branca sobre o papel
+   quente e por uma sombra curta. É pouca diferença de valor, e é de propósito —
+   com um fundo só, dois degraus de elevação chegam para dizer o que é chão e o
+   que é objeto. */
+.compc{background:var(--fundo-eleva);border-radius:var(--r);
+  box-shadow:var(--luz-topo),var(--sombra-2);overflow:hidden;display:flex;flex-direction:column}
+/* 16:9, not 4:3. Every source feeding these four slots is already 16:9 — the
+   generator's canonical crop is `cards/16x9.jpg` and the website recording is
+   1920×1080 — so a 4:3 box was cropping a quarter off the sides of all of them.
+   On the website card that meant losing the edges of the page, which is most of
+   what says "this is a website". */
+.compc .thumb{aspect-ratio:16/9;position:relative}
+.compc .thumb .phbox{position:absolute;inset:0;border:0}
+.compc .body{padding:22px 24px 26px;display:flex;flex-direction:column;flex:1}
+.compc h3{margin-bottom:8px}
+.compc p{font-size:.9rem}
+/* The card's way out. It sits on the bottom edge of every card — `margin-top:
+   auto` puts it there whether the paragraph runs two lines or four, so the six
+   CTAs line up across a row instead of following the ragged bottom of the copy.
+
+   It is a span, not a link: the service pages do not exist yet, and an <a> that
+   goes nowhere is the dead click the carousel arrows were already fixed for.
+   Wire the href here when the pages land, and the styling is already right. */
+.ccta{margin-top:auto;padding-top:18px;align-self:flex-start;
+  font-size:.82rem;font-weight:500;color:var(--roxo-2);
+  display:inline-flex;align-items:center;gap:8px}
+.ccta svg{width:14px;height:14px;flex:none;
+  transition:transform 260ms var(--ease-out)}
+.compc:hover .ccta svg{transform:translateX(4px)}
+
+/* ── positioning ─────────────────────────────────────────────────────
+   The one prose block on the page, and it earns its place: the keyword
+   research found that German studios sell aesthetics and German agencies
+   sell branding, and nobody claims the crossing. This section is the claim. */
+/* A comparação é o argumento comercial inteiro da empresa e estava a viver
+   numa lista sem estilo, em meia coluna, com três parágrafos ao lado a puxar o
+   olho. Passa a ser a secção: largura toda, escala a sério.
+
+   E as três linhas não são três de três — são duas coisas e depois outra. Por
+   isso a terceira não muda de tom, muda de matéria: ganha superfície, como os
+   cartões do resto da página. O padding lateral das duas primeiras iguala o do
+   cartão, para as três colunas de rótulos ficarem a prumo. */
+.vs{list-style:none;margin-top:6px}
+.vs li{display:grid;grid-template-columns:11rem 1fr;gap:28px;align-items:baseline;
+  padding:24px 30px;font-size:1.06rem}
+.vs .who{color:var(--texto-3);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.vs .them{color:var(--texto-2)}
+.vs li.us{background:var(--fundo-eleva);border-radius:var(--r);box-shadow:var(--luz-topo),var(--sombra-2);
+  margin-top:12px;padding-top:30px;padding-bottom:30px}
+.vs li.us .who{color:var(--roxo-2)}
+.vs li.us .them{color:var(--texto);font-weight:500;font-size:1.2rem}
+
+/* ── steps ──────────────────────────────────────────────────────────── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+/* A régua de 2px que marcava os quatro passos saiu com os filetes, e com ela
+   foi-se o sinal de que aquilo é uma sequência: ficaram quatro colunas de texto
+   com um número pequeno e cinzento, que se lêem como quatro recados soltos.
+
+   Quem repõe a espinha é o algarismo, não uma linha nova — reintroduzir uma
+   régua agora desfazia a decisão de tirar todas. A escala grande torna a ordem
+   legível antes de se ler uma palavra, que é o que uma régua fazia e mais nada.
+
+   O terracota no 01 saiu: acentuar o primeiro passo dizia «está aqui», e numa
+   landing page isso não quer dizer nada. */
+.step{padding-top:4px}
+.step .num{font-size:clamp(2.6rem,4vw,3.5rem);font-weight:300;letter-spacing:-.03em;
+  line-height:1;color:var(--texto-fraco);margin-bottom:14px;font-variant-numeric:tabular-nums}
+.step h3{font-size:1.02rem;margin-bottom:8px}
+.step p{font-size:.9rem}
+
+/* ── qualification ──────────────────────────────────────────────────
+   Inherited from the sector prototype and kept deliberately: with WhatsApp
+   as the primary CTA the friction is near zero, and a page that filters
+   nobody hands the sales team a list nobody wants to call. */
+.qual{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.qcol{border-radius:var(--r);padding:32px 34px;background:var(--fundo-eleva);box-shadow:var(--luz-topo),var(--sombra-2)}
+/* a coluna «sim» distinguia-se por bordo terracota + lavagem; sem bordo, a
+   lavagem sozinha tem de dizê-lo, por isso desce mais pelo cartão abaixo */
+.qcol.yes{background:linear-gradient(180deg,var(--roxo-fundo),transparent 52%),var(--fundo-eleva)}
+.qcol h3{margin-bottom:18px}
+.qcol ul{list-style:none}
+.qcol li{font-size:.93rem;color:var(--texto-2);padding:8px 0 8px 26px;position:relative}
+.qcol li::before{content:"—";position:absolute;left:0;top:8px;color:var(--texto-fraco)}
+.qcol.yes li::before{content:"✓";color:var(--roxo-2)}
+
+/* ── faq ────────────────────────────────────────────────────────────── */
+/* Uma lista com seis entradas separadas só por espaço fica mole. Sem filetes, o
+   que dá borda a cada pergunta é a própria superfície — cada uma passa a cartão,
+   que é a mesma peça que o resto da página já usa. */
+.faq{display:flex;flex-direction:column;gap:8px}
+.faq details{background:var(--fundo-eleva);border-radius:var(--r);box-shadow:var(--luz-topo),var(--sombra-1);
+  padding:0 26px;transition:box-shadow 240ms ease}
+.faq details[open]{box-shadow:var(--luz-topo),var(--sombra-2)}
+.faq summary{padding:20px 0;cursor:pointer;font-size:.98rem;font-weight:500;list-style:none;display:flex;justify-content:space-between;gap:20px;transition:color 200ms ease}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:'';flex:none;width:13px;height:13px;margin-top:.34em;
+  background:
+    linear-gradient(var(--roxo-2),var(--roxo-2)) center/100% 1.5px no-repeat,
+    linear-gradient(var(--roxo-2),var(--roxo-2)) center/1.5px 100% no-repeat;
+  transition:background-size 320ms var(--ease-out),transform 320ms var(--ease-out);
+}
+.faq details[open] summary::after{background-size:100% 1.5px,1.5px 0;transform:rotate(180deg)}
+.faq summary:hover{color:var(--roxo-2)}
+.faq .ans{padding:0 0 22px;max-width:72ch;font-size:.93rem;color:var(--texto-2)}
+
+/* ── form ───────────────────────────────────────────────────────────── */
+.cgrid{display:grid;grid-template-columns:.85fr 1.15fr;gap:60px;align-items:start}
+form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.f-full{grid-column:1/-1}
+label{display:block;font-size:.75rem;color:var(--texto-3);margin-bottom:6px}
+/* Sem bordo, o campo é a superfície branca sobre o papel. Perde-se um sinal de
+   afordância, por isso o foco tem de ser mais explícito do que era: anel a
+   sério, não uma mudança de cor de linha que já não existe. */
+input,select,textarea{width:100%;background:var(--branco);border:0;border-radius:var(--r-sm);
+  padding:13px 15px;color:var(--texto);font-family:inherit;font-size:.9rem;
+  box-shadow:var(--sombra-1);transition:box-shadow 200ms ease}
+input:focus,select:focus,textarea:focus{outline:none;
+  box-shadow:0 0 0 2px var(--roxo-2),0 0 0 6px var(--roxo-fundo)}
+textarea{resize:vertical;min-height:88px}
+.cinfo{padding-top:4px;margin-top:30px}
+.cinfo div{margin-bottom:14px}
+.cinfo span{display:block;font-size:.73rem;color:var(--texto-3);margin-bottom:2px}
+.fnote{grid-column:1/-1;font-size:.78rem;color:var(--texto-3)}
+
+/* ── estados do formulário ───────────────────────────────────────────────
+   O momento comercial da página inteira, e até aqui era um alert(). Três
+   coisas em falta: dizer que ouviu, impedir o segundo clique, e não trocar
+   formulário por confirmação com um corte seco.
+
+   A largura do botão é 100%, por isso trocar a legenda não mexe no layout —
+   o crossfade é só da palavra. */
+.fsub{position:relative;overflow:hidden}
+.fsub span{display:block;transition:opacity 160ms ease}
+.form-envia .fsub{pointer-events:none}
+.form-envia .fsub .rotulo{opacity:0}
+.fsub .pendente{position:absolute;inset:0;display:grid;place-items:center;opacity:0}
+.form-envia .fsub .pendente{opacity:1}
+/* ponto que pulsa em vez de spinner a girar: a esta escala um spinner é
+   ruído, e o pulso diz «a trabalhar» com uma propriedade só */
+.fsub .pendente i{width:7px;height:7px;border-radius:50%;background:currentColor;
+  animation:pulso 1s var(--ease-in-out) infinite}
+@keyframes pulso{0%,100%{opacity:.35;transform:scale(.85)}50%{opacity:1;transform:scale(1)}}
+
+/* saída do formulário e entrada da confirmação, pelo mesmo eixo */
+form[data-form="lead"]{transition:opacity 200ms var(--ease-out)}
+.form-feito form[data-form="lead"]{opacity:0;pointer-events:none}
+.obrigado{display:none;background:var(--fundo-eleva);border-radius:var(--r);
+  box-shadow:var(--luz-topo),var(--sombra-2);padding:38px 40px}
+/* Sem `both`, de propósito. Com fill, o estado final da confirmação passava a
+   ser propriedade da animação — e se a animação não corresse, a mensagem que
+   diz que a lead entrou ficava invisível. Assim o repouso é opacity:1 no
+   próprio elemento e a animação só serve para lá chegar: o pior caso passa a
+   ser aparecer sem transição, em vez de não aparecer. */
+.form-feito .obrigado{display:block;animation:sobe 320ms var(--ease-out)}
+@keyframes sobe{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.obrigado h3{margin-bottom:10px}
+.obrigado p{font-size:.95rem}
+/* Honeypot. Not display:none — some autofillers and bots skip hidden inputs
+   but happily fill one that is merely off-canvas. */
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+
+/* ── closing band ───────────────────────────────────────────────────── */
+/* O quarto grafismo das guidelines — o alternativo escuro, dois orbes
+   desfocados sobre noite/petróleo. É o segundo e último sítio onde o roxo
+   ocupa área, e fica no momento em que se volta a pedir a conversa. */
+.cta-band{padding:48px;border-radius:var(--r);background:var(--grad-orbes);
+  box-shadow:var(--luz-topo),var(--sombra-2);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:26px;flex-wrap:wrap}
+.cta-band h3{font-size:clamp(1.3rem,2.4vw,1.9rem);max-width:22ch;margin:0 auto}
+.cta-band .ctas{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+
+/* ── footer ─────────────────────────────────────────────────────────
+   LP-ONLY. No sitemap: the sector page's footer offers eleven ways out and
+   this page has one job. What stays is the legal minimum. */
+footer{padding:24px 0 40px}
+.fbot{display:flex;justify-content:space-between;gap:16px;font-size:.78rem;color:var(--texto-3);flex-wrap:wrap;align-items:center}
+
+/* ── mobile sticky CTA ───────────────────────────────────────────────
+   LP-ONLY. The brief wants both CTAs reachable without scrolling. On desktop
+   the header pill does it; on a phone the header only has room for one, so
+   the pair moves to the bottom, where the thumb is. A bar, not a pop-up —
+   it never covers content it doesn't own. */
+.sticky{
+  display:none;position:fixed;z-index:190;left:0;right:0;bottom:0;
+  padding:10px 12px calc(10px + env(safe-area-inset-bottom));gap:10px;
+  background:rgba(11,18,32,.90);
+  -webkit-backdrop-filter:blur(20px) saturate(140%);backdrop-filter:blur(20px) saturate(140%);
+  /* o filete de topo saiu com os outros; o que separa a barra do conteúdo que
+     passa por baixo dela é o desfoque e uma sombra a subir */
+  box-shadow:0 -6px 20px rgba(4,8,15,.24);
+}
+/* A barra estava lá desde o primeiro pixel, por cima de um hero que já tem os
+   dois CTA — no telemóvel via-se «WhatsApp» duas vezes ao mesmo tempo, e a
+   barra tapava conteúdo antes de o ter merecido. Passa a entrar quando o hero
+   sai do ecrã, que é o momento em que o CTA deixa de estar à vista.
+   110% e não 100%: a sombra sobe 6px e ficava a espreitar. */
+.js .sticky{transform:translateY(110%);transition:transform 320ms var(--ease-out)}
+.js .sticky.on{transform:none}
+.sticky .btn{flex:1 1 0;justify-content:center}
+
+@media (hover:hover) and (pointer:fine){
+  .case:hover .phbox img{transform:scale(1.02)}
+  .phbox img{transition:transform 600ms var(--ease-out)}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .btn:active,.cbtn:active{transform:none}
+  .phbox img{transition:none}
+  .case:hover .phbox img{transform:none}
+  .hero .scroll-cue .rail::after{animation:none;top:0;height:38px;opacity:.7}
+
+  /* Mais suave, não desligado — a preferência é por menos movimento, não por
+     cortes secos. Tudo o que deslocava passa a só esbater, e a escada cai:
+     três atrasos em fila são tempo de espera sem nada a acontecer. */
+  .js .hero .wrap>*{transform:none;transition:opacity 300ms var(--ease-out)}
+  .js .hero .wrap>*:nth-child(2),.js .hero .wrap>*:nth-child(3){transition-delay:0ms}
+  .js .hero .scroll-cue{transition:opacity 300ms var(--ease-out) 120ms}
+  .js .sticky{transform:none;opacity:0;transition:opacity 200ms ease}
+  .js .sticky.on{opacity:1}
+  .fsub .pendente i{animation:none;opacity:.7}
+  .form-feito .obrigado{animation:entra-suave 200ms var(--ease-out)}
+  /* o fade do vídeo fica: é a emenda de um salto, que é o que a preferência quer */
+}
+@keyframes entra-suave{from{opacity:0}to{opacity:1}}
+
+@media(max-width:1000px){
+  .comps,.steps{grid-template-columns:1fr 1fr}
+  .qual,.cgrid,form{grid-template-columns:1fr}
+  /* o rótulo sobe para cima da frase — 11rem de coluna num ecrã de 375px
+     deixava a frase a partir-se em duas palavras por linha */
+  .vs li{grid-template-columns:1fr;gap:6px;padding:20px 24px;font-size:1rem}
+  .vs li.us .them{font-size:1.08rem}
+  .case{flex:0 0 84%;aspect-ratio:3/4}
+  .cbody{padding:24px 22px;max-width:none}
+  .shead{flex-direction:column;align-items:flex-start;gap:18px}
+  .sec{padding:64px 0}
+  .sec.tight{padding:48px 0}
+  header{width:calc(100% - 24px);top:12px}
+  header .wrap{padding:0 8px 0 20px}
+  .hero .wrap{width:calc(100% - 24px);padding:0 21px}
+  /* the header keeps the call; WhatsApp moves to the sticky bar */
+  header .navr .btn-wa{display:none}
+  .sticky{display:flex}
+  /* clearance so the bar never sits on top of the submit button */
+  body{padding-bottom:76px}
+  .cta-band{padding:32px 26px}
+}
+@media(max-width:620px){
+  .comps,.steps{grid-template-columns:1fr}
+  /* a dobrar em quatro ou cinco linhas, o tracking larga e o ponto médio
+     aperta — senão a tira ocupa mais altura que o próprio título */
+  .hero-svc{font-size:.7rem;letter-spacing:.08em;gap:9px 20px;margin-top:20px}
+  .hero .ctas .btn{flex:1 1 100%;justify-content:center}
+}

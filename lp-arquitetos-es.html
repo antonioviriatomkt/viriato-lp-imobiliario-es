@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Landing da campanha paga — ARQUITETOS · ESPANHA.
+
+     É a página para onde apontam os cinco grupos de anúncios da campanha
+     espanhola. Espanha ficou com todo o orçamento a 17/08 (~4.100 pesquisas
+     qualificadas a €4,26, leilão vazio confirmado duas vezes).
+
+     Esta casca não tem conteúdo: o corpo é o assets/lp.js e tudo o que é
+     castelhano vive no assets/conteudo.js, na entrada que o `data-variante`
+     abaixo escolhe. Se uma frase muda, muda lá.
+
+     Uma página para os cinco grupos — sem variante por cidade. Se algum grupo
+     vier a merecer página própria será Barcelona, e só com dados.
+
+     ⚠️ NÃO PODE RECEBER TRÁFEGO. Faltam três respostas comerciais — preço por
+     peça, rondas de revisão, prazo de concurso — e faltam o endpoint do
+     formulário, o número de WhatsApp, o domínio e a medição. Ver o README. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Renders de arquitectura para estudios · Viriato</title>
+<meta name="description" content="Renders 3D de exteriores e interiores, vídeo y tours virtuales para estudios de arquitectura. Partimos de tu modelo y de tu fecha de entrega.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/lp.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+
+<body data-variante="arquitetos-es">
+
+<noscript>
+  <div class="wrap" style="padding:120px 0 60px">
+    <h1>Renders de Arquitectura</h1>
+    <p style="margin-top:18px;max-width:58ch">Este prototipo monta la página con JavaScript. En producción el cuerpo lo sirve el servidor y no depende de él.</p>
+  </div>
+</noscript>
+
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script src="dados.js"></script>
+<script src="assets/conteudo.js"></script>
+<script src="assets/lp.js"></script>
+</body>
+</html>

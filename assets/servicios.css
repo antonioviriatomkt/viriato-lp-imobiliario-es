@@ -1,0 +1,155 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   SERVICIOS · ES — só o que é novo (18/08)
+
+   Esta folha carrega DEPOIS do `assets/lp.css` e não redefine um único token.
+   Tudo o que já existe — a paleta, os gradientes, o header em pastilha, os
+   botões, o cartão de FAQ, o formulário, a secção clara, a faixa de fecho — vem
+   de lá tal e qual. O que está aqui são as quatro peças que a landing não tem:
+
+     · o cabeçalho da página (título grande, sem hero de vídeo);
+     · o menu lateral pegajoso;
+     · o bloco de serviço — título, copy, média, passos;
+     · os passos em acordeão, que são filas com filete e não cartões.
+
+   A regra de contenção é a mesma da landing: nada aqui pinta cor fora do eixo
+   da paleta, e o roxo continua a ser só sinal — o traço do item ativo do menu e
+   o glifo do acordeão, e mais nada.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── cabeçalho da página ─────────────────────────────────────────────────
+   Não é um hero. A landing abre com o filme a ecrã inteiro porque tem de
+   parar alguém que chegou de um anúncio; esta página recebe quem já lá esteve
+   e clicou «Ver servicio», e a pergunta que traz é «o que é isto», não «quem
+   sois». Por isso: título grande, uma linha, e a lista começa logo abaixo.
+
+   O padding de topo é o do header fixo (58px + 14px) mais o ar da secção. */
+.pg-head{padding:158px 0 60px}
+.pg-head .wrap{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end}
+.pg-head h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:400;letter-spacing:-.035em}
+.pg-head .lead{margin-top:20px;max-width:52ch;font-size:1.02rem}
+/* A nota alinhada à direita, em baixo, no canto — a mesma figura que a
+   referência usa para dizer em voz baixa o que a página é. Cai fora abaixo de
+   1000px: encostada à esquerda por baixo do título já não é uma nota, é um
+   segundo parágrafo a competir com o primeiro. */
+.pg-head .nota{max-width:24ch;text-align:right;font-size:.86rem;color:var(--texto-3);padding-bottom:8px}
+
+/* ── o corpo: menu + lista ───────────────────────────────────────────────
+   Duas colunas. A da esquerda é fixa em 200px e não em fração: um índice que
+   respira com a janela muda de largura entre 1240px e 1000px e os itens
+   partem-se em duas linhas a meio do caminho. */
+.svc-layout{display:grid;grid-template-columns:200px 1fr;gap:64px;align-items:start}
+
+/* ── menu lateral ────────────────────────────────────────────────────────
+   Pegajoso por baixo do header. O `top` é a altura da pastilha (14+58) mais
+   32px de ar — abaixo disto o índice encosta ao vidro e lê-se como parte dele.
+
+   O item ativo ganha um traço, não um bold nem uma mudança de tamanho: o
+   traço mora num `::before` de largura fixa que já está lá a 0 de opacidade,
+   por isso o texto nunca salta quando a marca entra ou sai. */
+.svc-nav{position:sticky;top:104px}
+.svc-nav .eyebrow{margin-bottom:10px}
+.svc-nav ul{list-style:none;display:flex;flex-direction:column;gap:1px}
+.svc-nav a{display:block;padding:7px 0;font-size:.86rem;color:var(--texto-3);
+  transition:color 200ms ease}
+.svc-nav a::before{content:'';display:inline-block;width:14px;height:1px;
+  background:currentColor;vertical-align:middle;margin-right:9px;
+  opacity:0;transition:opacity 220ms ease}
+.svc-nav a:hover{color:var(--texto)}
+.svc-nav a.on{color:var(--roxo-2)}
+.svc-nav a.on::before{opacity:1}
+.svc-nav .sep{display:block;height:1px;background:var(--linha);margin:16px 0}
+
+/* ── bloco de serviço ────────────────────────────────────────────────────
+   Título à esquerda, uma frase à direita, e depois a imagem a ocupar o resto.
+   As duas colunas do cabeçalho são iguais de propósito: com o título a puxar
+   metade da largura, um H2 de duas palavras deixa de parecer um rótulo solto
+   sobre um parágrafo comprido.
+
+   `scroll-margin-top` é o que impede a âncora de aterrar debaixo do header —
+   o `scroll-padding-top` da folha da landing está calibrado para uma página
+   que não tem menu lateral. */
+.svc-block{scroll-margin-top:120px;padding-bottom:104px}
+.svc-block:last-of-type{padding-bottom:72px}
+.svc-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:start;margin-bottom:32px}
+.svc-head h2{font-size:clamp(1.7rem,3vw,2.5rem)}
+.svc-head p{font-size:1rem;max-width:46ch}
+
+/* ── média ───────────────────────────────────────────────────────────────
+   Duas imagens quando há duas obras com o componente, uma quando só há uma.
+   Sem véu e sem legenda por cima: aqui a imagem não carrega texto nenhum, o
+   nome do empreendimento vive por baixo dela em letra pequena — que é o que
+   uma página de serviço faz e uma landing não pode fazer, porque na landing o
+   cartão é o argumento inteiro. */
+.svc-media{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:36px}
+.svc-media.uma{grid-template-columns:1fr}
+.svc-fig{margin:0;min-width:0}
+.svc-fig .thumb{position:relative;aspect-ratio:16/10;border-radius:var(--r);overflow:hidden}
+.svc-media.uma .svc-fig .thumb{aspect-ratio:21/9}
+.svc-fig .phbox{position:absolute;inset:0;border:0}
+.svc-fig figcaption{margin-top:11px;font-size:.78rem;color:var(--texto-3)}
+
+/* ── passos ──────────────────────────────────────────────────────────────
+   Filas com filete, e não os cartões da FAQ. A diferença não é de gosto: a FAQ
+   é uma lista de coisas soltas e cada cartão é uma unidade que se lê sozinha;
+   isto é uma SEQUÊNCIA — 01 leva ao 02 — e uma sequência precisa de continuar
+   de linha em linha em vez de partir em seis objetos com ar entre eles.
+
+   É também o único sítio da página onde entra um filete, e é por isso que
+   entra: a folha da landing tirou-os todos porque não estavam a separar nada
+   que o espaço não separasse melhor. Aqui está.
+
+   O glifo é o mesmo da FAQ, por ser o mesmo gesto. */
+.svc-steps{border-top:1px solid var(--linha)}
+.svc-steps details{border-bottom:1px solid var(--linha)}
+.svc-steps summary{display:flex;align-items:center;gap:18px;padding:17px 2px;
+  cursor:pointer;list-style:none;transition:color 200ms ease}
+.svc-steps summary::-webkit-details-marker{display:none}
+.svc-steps summary:hover{color:var(--roxo-2)}
+.svc-steps .sn{flex:none;width:2.6rem;font-size:.72rem;letter-spacing:.14em;
+  color:var(--texto-3);font-variant-numeric:tabular-nums}
+.svc-steps .st{flex:1;font-size:.78rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.svc-steps summary:hover .sn{color:inherit}
+.svc-steps summary::after{
+  content:'';flex:none;width:12px;height:12px;
+  background:
+    linear-gradient(var(--roxo-2),var(--roxo-2)) center/100% 1.5px no-repeat,
+    linear-gradient(var(--roxo-2),var(--roxo-2)) center/1.5px 100% no-repeat;
+  transition:background-size 320ms var(--ease-out),transform 320ms var(--ease-out)}
+.svc-steps details[open] summary::after{background-size:100% 1.5px,1.5px 0;transform:rotate(180deg)}
+/* alinhado com o rótulo e não com o algarismo — a resposta é do passo, e o
+   algarismo é a coluna que o numera */
+.svc-steps .ans{padding:0 0 22px 4.4rem;max-width:66ch;font-size:.93rem;color:var(--texto-2)}
+
+/* ⚠️ marca de rascunho. Estes seis blocos de passos foram escritos a 18/08 a
+   partir do que o vault já diz e NÃO foram validados por produção nem pelo
+   comercial. A marca é para se ver em revisão e para sair quando alguém os
+   assinar — não é decoração. */
+.svc-borrador{display:inline-flex;align-items:center;gap:8px;margin-bottom:22px;
+  padding:7px 13px;border-radius:100px;
+  background:var(--roxo-fundo);border:1px solid var(--roxo-linha);
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;color:var(--roxo-2)}
+
+@media(max-width:1000px){
+  .pg-head{padding:112px 0 44px}
+  .pg-head .wrap{grid-template-columns:1fr;gap:0}
+  .pg-head .nota{display:none}
+  .svc-layout{grid-template-columns:1fr;gap:26px}
+  /* O índice passa a fita horizontal encostada por baixo do header. Sangra
+     para fora do `.wrap` para os itens poderem correr até à margem do ecrã em
+     vez de pararem a 28px dela — uma fita que acaba antes do bordo não parece
+     uma fita que continua. */
+  .svc-nav{top:78px;z-index:150;margin:0 -28px;padding:11px 28px;
+    background:rgba(11,18,32,.92);
+    -webkit-backdrop-filter:blur(18px) saturate(140%);backdrop-filter:blur(18px) saturate(140%);
+    box-shadow:0 6px 18px rgba(4,8,15,.22)}
+  .svc-nav .eyebrow,.svc-nav .sep-li{display:none}
+  .svc-nav ul{flex-direction:row;gap:20px;overflow-x:auto;scrollbar-width:none}
+  .svc-nav ul::-webkit-scrollbar{display:none}
+  .svc-nav a{white-space:nowrap;padding:2px 0;font-size:.8rem}
+  .svc-nav a::before{display:none}
+  .svc-block{scroll-margin-top:150px;padding-bottom:72px}
+  .svc-head{grid-template-columns:1fr;gap:14px;margin-bottom:24px}
+  .svc-media{grid-template-columns:1fr}
+  .svc-media.uma .svc-fig .thumb{aspect-ratio:16/10}
+  .svc-steps .ans{padding-left:2.6rem}
+}

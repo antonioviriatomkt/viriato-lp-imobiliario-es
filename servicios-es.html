@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Página de servicios — ARQUITECTOS · ESPAÑA. Nueva el 18/08.
+
+     Complementa lp-arquitetos-es.html, que es la landing que la campaña va a
+     usar. Existe por una razón concreta: la decisión del 17/08 dejó el CTA
+     «Ver servicio» de las seis tarjetas INERTE — «parece accionable y no lo
+     es» — con la consecuencia escrita de «conectar o quitar antes de que haya
+     tráfico». Esto es el conectar.
+
+     Mismo sistema visual (assets/lp.css, sin un token nuevo) y misma copy
+     (assets/conteudo.js, entrada `arquitetos-es`). Lo único nuevo vive en
+     assets/servicios.js: el título de la página y los cuatro pasos de cada
+     servicio.
+
+     ⚠️ BORRADOR, y hereda los bloqueos de la landing porque es la misma
+     campaña: precio por pieza, rondas de revisión y plazo de concurso siguen
+     ⟨pendientes⟩; el WhatsApp sigue muerto; el formulario sigue sin endpoint.
+     Los cuatro pasos por servicio están sin validar por producción ni por el
+     comercial, y la página lo dice en pantalla.
+
+     `noindex` por la misma razón que las tres landings: atacan los mismos
+     términos que la página de sector y se canibalizarían. -->
+<meta name="robots" content="noindex, nofollow">
+<title>Servicios · Renders, vídeo, tours y web · Viriato</title>
+<meta name="description" content="Los seis servicios de Viriato para un proyecto de arquitectura: renders 3D, identidad e impresión, tours virtuales, web de ventas, marketing de resultados y vídeo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+<!-- El sistema entero viene de la landing. servicios.css sólo añade lo que
+     esta página tiene y aquélla no: el encabezado, el índice lateral, el
+     bloque de servicio y los pasos en acordeón. Ningún token se redefine. -->
+<link rel="stylesheet" href="assets/lp.css">
+<link rel="stylesheet" href="assets/servicios.css">
+<script>document.documentElement.classList.add('js')</script>
+</head>
+
+<body data-variante="arquitetos-es">
+
+<noscript>
+  <div class="wrap" style="padding:120px 0 60px">
+    <h1>Servicios</h1>
+    <p style="margin-top:18px;max-width:58ch">Este prototipo monta la página con JavaScript. En producción el cuerpo lo sirve el servidor y no depende de él.</p>
+  </div>
+</noscript>
+
+<script src="https://unpkg.com/lenis@1/dist/lenis.min.js"></script>
+<script src="dados.js"></script>
+<script src="assets/conteudo.js"></script>
+<script src="assets/servicios.js"></script>
+</body>
+</html>
