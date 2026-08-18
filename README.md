@@ -43,29 +43,6 @@ O `slot` de cada serviço (`imagens`, `identidade`, `visitas`, `website`,
 `performance`, `video`) é a chave única: comanda a copy, o media e a âncora
 entre as duas páginas.
 
-## ⚠️ Isto não pode receber tráfego já
-
-Não é uma página acabada à espera de deploy. Falta-lhe o seguinte, e as três
-primeiras são decisões comerciais, não trabalho de desenvolvimento:
-
-| | O que falta |
-|---|---|
-| 🔴 | **Preço por peça** — ⟨pendiente⟩ na página. É a primeira pergunta deste comprador |
-| 🔴 | **Rondas de revisão incluídas** — ⟨pendiente⟩ |
-| 🔴 | **Prazo de concurso** — ⟨pendiente⟩ |
-| 🔴 | **Quem responde em castelhano, e em quanto tempo** — ninguém está nomeado |
-| 🔴 | **Formulário sem endpoint.** O `submit` está desenhado (estados de espera, erro e agradecimento) mas não envia. Ver `assets/lp.js` — quando o endpoint existir troca-se o `espera()` pelo `fetch` e mais nada |
-| 🔴 | **WhatsApp morto.** Os botões são `href="#"`: falta o número real e a pessoa que o atende |
-| 🟡 | **Domínio por decidir** e **medição por montar** — Consent Mode v2 é obrigatório (RGPD/LOPDGDD) |
-| 🟡 | **Privacidade e cookies** são `href="#"` — obrigatórias antes do primeiro envio |
-
-Tudo o que está entre `⟨parênteses angulares⟩` é um marcador à espera de
-decisão. Estão estilizados por `.ph` e são **visíveis de propósito** em revisão.
-
-Na página de serviços, os **quatro passos de cada serviço são rascunho** — não
-validados por produção nem pelo comercial. A página di-lo em pastilha
-(`.svc-borrador`); a marca sai quando alguém os assinar.
-
 ## Notas de implementação
 
 - **`noindex, nofollow`** nas duas páginas, e repetido em cabeçalho no
