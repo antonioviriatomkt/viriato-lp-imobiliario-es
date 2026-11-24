@@ -74,6 +74,8 @@
   .tabs.packs .packs-grid { grid-template-columns: 1fr; margin-top: 32px; }
   .tabs.packs .packs-grid article { padding: 28px 24px; }
   .tabs.packs .packs-grid p { min-height: 0; margin-bottom: 24px; }
+  /* same 80px before "Fale connosco" as on desktop */
+  section.tabs.packs { margin-bottom: 80px; }
 }
 
 /* Projetos Selecionados — on mobile the "Ver projeto" button covers the
