@@ -122,3 +122,87 @@ section.cta header {
 section.cta header:before {
   min-height: 200%;
 }
+
+/* Projetos Selecionados — gallery popup (scripts/galeria.js) */
+section.hero.new section.slides > section[data-gallery].active { cursor: zoom-in; }
+.gallery-hint {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px 8px 10px;
+  border-radius: 999px;
+  background: rgba(11, 19, 32, .55);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 300ms ease;
+}
+section.hero.new section.slides > section.active .gallery-hint { opacity: 1; }
+
+html.lb-open { overflow: hidden; }
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  grid-template-columns: 64px 1fr 64px;
+  grid-template-rows: auto 1fr;
+  background: #070d18;
+  color: #fff;
+}
+.lb[hidden] { display: none; }
+.lb-bar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 12px 12px 24px;
+}
+.lb-title { margin: 0; font-size: 18px; }
+.lb button {
+  all: unset;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+}
+.lb button:hover { background: rgba(255, 255, 255, .18); }
+.lb button:focus-visible { outline: 2px solid #a2e5eb; outline-offset: 2px; }
+.lb .lb-nav { align-self: center; justify-self: center; }
+.lb-stage {
+  margin: 0;
+  min-height: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 0 24px;
+}
+.lb-stage img {
+  max-width: 100%;
+  max-height: calc(100vh - 96px);
+  max-height: calc(100dvh - 96px);
+  object-fit: contain;
+  border-radius: 12px;
+  transition: opacity 200ms ease;
+}
+.lb.loading .lb-stage img { opacity: .35; }
+@media (max-width: 799px) {
+  /* image full width; arrows below it, left and right */
+  .lb { grid-template-columns: 1fr; grid-template-rows: auto 1fr; }
+  .lb-stage { padding: 0 8px 96px; }
+  .lb-stage img { border-radius: 8px; max-height: calc(100dvh - 180px); }
+  .lb .lb-nav { position: absolute; bottom: 28px; }
+  .lb .lb-prev { left: 24px; }
+  .lb .lb-next { right: 24px; }
+}

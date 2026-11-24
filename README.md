@@ -27,6 +27,7 @@ Os caminhos são os mesmos do site em produção:
 | `images/`, `video/`, `media/` | imagens, vídeos e posters |
 | `fonts/indivisible/` + `styles/fonts.css` | Indivisible (Thin, Regular, Bold) — substitui a DM Sans de produção. O peso 300 usa a Regular: a Thin é demasiado fina em texto corrido |
 | `styles/landing.css` | Alterações da landing (hero, packs Launch/Growth/Experience) por cima do `mainnew.css`, que se mantém igual ao de produção |
+| `scripts/galeria.js` | Popup de imagens dos Projetos Selecionados. As listas de imagens vêm da galeria da Marketing Suite (`viriato.com.pt/aw/`, ex. `#vh-1`); as imagens carregam de lá, uma de cada vez. Evergreen Village e Evergreen Pure não têm galeria |
 
 ## O que difere da produção
 
