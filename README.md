@@ -25,7 +25,8 @@ Os caminhos são os mesmos do site em produção:
 | `scripts/` | `main.js`, `forms.js`, `cookies.js`, jQuery |
 | `cookies/pt.html` | o fragmento do banner de cookies que o `cookies.js` vai buscar a `/cookies/pt` |
 | `images/`, `video/`, `media/` | imagens, vídeos e posters |
-| `cf-fonts/` | DM Sans, como a Cloudflare a serve em produção |
+| `fonts/indivisible/` + `styles/fonts.css` | Indivisible (Thin, Regular, Bold) — substitui a DM Sans de produção. O peso 300 usa a Regular: a Thin é demasiado fina em texto corrido |
+| `styles/landing.css` | Alterações da landing (hero, packs Launch/Growth/Experience) por cima do `mainnew.css`, que se mantém igual ao de produção |
 
 ## O que difere da produção
 
