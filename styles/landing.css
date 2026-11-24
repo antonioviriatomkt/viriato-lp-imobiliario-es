@@ -2,6 +2,9 @@
    Kept separate so mainnew.css stays identical to viriato.com.pt. */
 
 /* Hero — "Iconic. And sold." + who we are */
+.hero h1 {
+  text-transform: uppercase;
+}
 .hero h1 strong {
   font-weight: 600;
 }
