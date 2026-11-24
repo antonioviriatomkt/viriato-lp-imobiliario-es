@@ -110,3 +110,15 @@
   /* buttons stack on the narrowest phones; give them room */
   header.hero section.slides { height: 640px; }
 }
+
+/* "Tem algum projeto em pipeline?" card — its gradient is a square that
+   slides up by half its height (keyframes "breath"). On narrow screens the
+   square is barely taller than the card, so the card's bottom was left
+   uncovered. At least 2× the card height keeps it covered; the base colour
+   is a fallback behind it. */
+section.cta header {
+  background-color: #0b1320;
+}
+section.cta header:before {
+  min-height: 200%;
+}
