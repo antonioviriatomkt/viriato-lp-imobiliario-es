@@ -1,0 +1,43 @@
+/* Landing changes on top of the production stylesheet (mainnew.css).
+   Kept separate so mainnew.css stays identical to viriato.com.pt. */
+
+/* Hero — "Iconic. And sold." + who we are */
+.hero h1 strong {
+  font-weight: 600;
+}
+.hero section.slides section header p.lead {
+  max-width: 46ch;
+  margin: 24px auto 36px;
+  padding: 0 20px;
+  font-size: clamp(16px, 1.4vw, 20px);
+  line-height: 1.6;
+  font-weight: 300;
+  color: rgba(255, 255, 255, .88);
+  text-align: center;
+}
+
+/* Services — Launch / Growth / Experience packs */
+.tabs.packs div.projects article {
+  display: flex;
+  flex-direction: column;
+}
+.tabs.packs ul.services {
+  flex: 1 1 auto;
+  list-style: none;
+  margin: 16px 0 0;
+  padding: 0;
+}
+.tabs.packs ul.services li {
+  padding: 10px 0;
+  border-top: 1px solid rgba(255, 255, 255, .12);
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+  color: #fff;
+}
+.tabs.packs ul.services li.sub {
+  padding-left: 20px;
+  font-size: 15px;
+  font-weight: 300;
+  color: #959CA5;
+}
