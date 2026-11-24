@@ -83,3 +83,13 @@
     display: none;
   }
 }
+
+/* Projetos Selecionados — on mobile the slider had a 600px minimum height,
+   which turned the 16:9 renders into tall crops. Cards are 4:3 instead
+   (card width = viewport − 40px; the slider is 40px taller than the card). */
+@media (max-width: 799px) {
+  section.hero.new section.slides {
+    min-height: 0;
+    height: calc((100vw - 40px) * .75 + 40px);
+  }
+}
