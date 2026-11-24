@@ -1,0 +1,30 @@
+/* Indivisible replaces DM Sans everywhere.
+   Thin (usWeightClass 250) only for weights below 300: at body sizes it is
+   too faint, so the site's many weight-300 texts use Regular instead.
+   Regular serves 300–500, Bold serves 600+. */
+@font-face {
+  font-family: "Indivisible";
+  font-style: normal;
+  font-weight: 100 299;
+  font-display: swap;
+  src: url(/fonts/indivisible/Indivisible-Thin.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Indivisible";
+  font-style: normal;
+  font-weight: 300 500;
+  font-display: swap;
+  src: url(/fonts/indivisible/Indivisible-Regular.woff2) format("woff2");
+}
+@font-face {
+  font-family: "Indivisible";
+  font-style: normal;
+  font-weight: 600 900;
+  font-display: swap;
+  src: url(/fonts/indivisible/Indivisible-Bold.woff2) format("woff2");
+}
+
+/* Same selector as mainnew.css; loaded after it, so it wins. */
+* {
+  font-family: "Indivisible", sans-serif;
+}
