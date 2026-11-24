@@ -308,10 +308,11 @@ section.vshow-tour .vshow-open {
   section.vshow-tour { height: 80svh; margin: 80px 0; }
 }
 
-/* Cover + V-SHOW: rounded like the site's other cards (hero, projects):
+/* Cover, V-SHOW and the contact form: rounded like the site's other cards (hero, projects):
    25px corners, 20px in from the screen edges. */
 section.cover-iconic,
-section.vshow-tour {
+section.vshow-tour,
+section.contacto {
   width: calc(100% - 40px);
   margin-left: 20px;
   margin-right: 20px;
