@@ -307,3 +307,14 @@ section.vshow-tour .vshow-open {
   /* desktop gets 80px between sections from the page layout; mobile doesn't */
   section.vshow-tour { height: 80svh; margin: 80px 0; }
 }
+
+/* Cover + V-SHOW: rounded like the site's other cards (hero, projects):
+   25px corners, 20px in from the screen edges. */
+section.cover-iconic,
+section.vshow-tour {
+  width: calc(100% - 40px);
+  margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 25px;
+  overflow: hidden;
+}
