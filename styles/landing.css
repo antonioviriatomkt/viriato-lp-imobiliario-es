@@ -225,7 +225,7 @@ section.cover-iconic h2 {
 }
 section.cover-iconic h2 span,
 section.cover-iconic h2 strong { display: block; }
-section.cover-iconic h2 span { font-weight: 250; }   /* Indivisible Thin */
+section.cover-iconic h2 span { font-weight: 400; }   /* Indivisible Regular */
 section.cover-iconic h2 strong { font-weight: 700; letter-spacing: .09em; }
 
 /* V-SHOW® Villa Heaven — full-bleed tour, loaded on demand (scripts/vshow.js) */
