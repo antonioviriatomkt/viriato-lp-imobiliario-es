@@ -93,3 +93,18 @@
     height: calc((100vw - 40px) * .75 + 40px);
   }
 }
+
+/* Hero — shorter on mobile (was a 750px minimum). */
+@media (max-width: 799px) {
+  header.hero section.slides {
+    min-height: 0;
+    height: 560px;
+  }
+  /* WhatsApp + Entre em contacto on one row */
+  header.hero ul.actions { gap: 8px; }
+  header.hero ul.actions li a { padding-left: 16px !important; padding-right: 16px !important; }
+}
+@media (max-width: 359px) {
+  /* buttons stack on the narrowest phones; give them room */
+  header.hero section.slides { height: 640px; }
+}
