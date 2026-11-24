@@ -75,3 +75,11 @@
   .tabs.packs .packs-grid article { padding: 28px 24px; }
   .tabs.packs .packs-grid p { min-height: 0; margin-bottom: 24px; }
 }
+
+/* Projetos Selecionados — on mobile the "Ver projeto" button covers the
+   project name, so it is hidden there (desktop keeps it). */
+@media (max-width: 799px) {
+  section.hero.new section.slides section header div.caption > a {
+    display: none;
+  }
+}
