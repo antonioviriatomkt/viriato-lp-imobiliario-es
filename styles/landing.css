@@ -318,3 +318,38 @@ section.vshow-tour {
   border-radius: 25px;
   overflow: hidden;
 }
+
+/* V-SHOW scroll mode: a transparent shield over the tour lets the wheel and
+   swipes scroll the page; click/tap it to explore (scripts/vshow.js). */
+section.vshow-tour .vshow-shield {
+  display: none;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  cursor: pointer;
+  /* label bottom-left: the top is under the fixed menu when the tour fills the screen */
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 16px;
+}
+section.vshow-tour.playing .vshow-shield { display: flex; }
+section.vshow-tour.playing.exploring .vshow-shield { display: none; }
+section.vshow-tour .vshow-hint {
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: rgba(11, 19, 32, .6);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+}
+section.vshow-tour .vshow-hint .touch { display: none; }
+@media (hover: none) {
+  section.vshow-tour .vshow-hint .mouse { display: none; }
+  section.vshow-tour .vshow-hint .touch { display: inline; }
+}
+@media (max-width: 799px) {
+  /* no room beside "Abrir em ecrã inteiro": sit just above it */
+  section.vshow-tour .vshow-shield { padding-bottom: 68px; }
+}
