@@ -125,27 +125,6 @@ section.cta header:before {
 
 /* Projetos Selecionados — gallery popup (scripts/galeria.js) */
 section.hero.new section.slides > section[data-gallery].active { cursor: zoom-in; }
-.gallery-hint {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  z-index: 5;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 8px 14px 8px 10px;
-  border-radius: 999px;
-  background: rgba(11, 19, 32, .55);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 300ms ease;
-}
-section.hero.new section.slides > section.active .gallery-hint { opacity: 1; }
 
 html.lb-open { overflow: hidden; }
 .lb {
