@@ -25,11 +25,9 @@
 }
 
 /* Thinking 360° — Launch / Experience / Growth in the layout of the
-   viriato.com.pt homepage services (scripts/tiers.js):
-   - .tier-card  = like "V-SHOW®": image slider + glass card with the
-     services as an accordion and the proposal request as the last row;
-   - .tier-split = like "CGI Images": text on the page background, one large
-     image beside it with a pill button. */
+   viriato.com.pt homepage services ("V-SHOW®"): images that change on their
+   own beside a glass card with the services as an accordion and the
+   proposal request as the last row (scripts/tiers.js). */
 /* same width and 20px side margins as Projetos Selecionados, at every size */
 section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tiers-list {
@@ -46,7 +44,6 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   gap: 56px;
   align-items: center;
 }
-.tier.tier-split { grid-template-columns: 5fr 7fr; gap: 72px; }
 
 /* the rotating orb used before the project names in "Projetos Selecionados" */
 .tier h4 .orb,
@@ -167,8 +164,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tier-services details[open]::details-content { block-size: auto; }
 
 /* buttons */
-.tier-more,
-.tier-see {
+.tier-more {
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -181,7 +177,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   text-decoration: none;
   transition: background-color .2s ease, color .2s ease;
 }
-.tier-more:hover, .tier-see:hover { background: #fff; color: #0b1220; }
+.tier-more:hover { background: #fff; color: #0b1220; }
 .tier-cta {
   display: flex;
   align-items: center;
@@ -200,18 +196,6 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tier-cta svg { width: 22px; height: 22px; transition: transform .2s ease; }
 .tier-cta:hover { background: #fff; color: #0b1220; }
 .tier-cta:hover svg { transform: translateX(4px); }
-/* "CGI Images": outlined button under the text */
-.tier-cta.outline {
-  display: inline-flex;
-  justify-content: flex-start;
-  margin-top: 32px;
-  padding: 14px 18px 14px 20px;
-  border-radius: 12px;
-  background: transparent;
-  border-color: rgba(255, 255, 255, .22);
-  font-size: 15px;
-}
-.tier-cta.outline svg { width: 18px; height: 18px; }
 
 /* ---- image side ---- */
 .tier-media {
@@ -248,8 +232,8 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tier-slides figure::after {
   content: "";
   position: absolute;
-  inset: 45% 0 0;
-  background: linear-gradient(to bottom, rgba(7, 13, 24, 0), rgba(7, 13, 24, .78));
+  inset: 70% 0 0; /* just enough to read the project name */
+  background: linear-gradient(to bottom, rgba(7, 13, 24, 0), rgba(7, 13, 24, .6));
   pointer-events: none;
 }
 .tier-slides figcaption {
@@ -257,10 +241,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   z-index: 1;
   left: 24px;
   right: 24px;
-  bottom: 92px;
-  display: flex;
-  flex-direction: column;
-  gap: 18px;
+  bottom: 24px;
 }
 .tier-proj {
   display: flex;
@@ -275,105 +256,16 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tier-proj .dot { width: 18px; height: 18px; border-width: 6px; filter: blur(3px); margin-right: 8px; }
 .tier-proj .sep { opacity: .7; font-size: 10px; }
 .tier-proj small { font-size: 14px; letter-spacing: 0; text-transform: none; }
-.tier-foot {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-}
-.tier-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-.tier-tags li {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  border-radius: 10px;
-  background: rgba(7, 13, 24, .72);
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  font-size: 13px;
-  line-height: 1;
-}
-.tier-tags li::before {
-  content: "";
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .45);
-}
-.tier-see { flex: none; padding: 13px 16px 13px 20px; }
-.tier-bar {
-  position: absolute;
-  z-index: 2;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 14px 16px 14px 24px;
-  background: rgba(7, 13, 24, .35);
-  -webkit-backdrop-filter: blur(14px);
-  backdrop-filter: blur(14px);
-}
-.tier-count { margin: 0; font-size: 16px; color: rgba(255, 255, 255, .6); }
-.tier-count b { font-weight: 400; color: #fff; }
-.tier-arrows { display: flex; gap: 8px; }
-.tier-arrows button {
-  all: unset;
-  display: grid;
-  place-items: center;
-  width: 56px;
-  height: 40px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, .12);
-  color: #fff;
-  cursor: pointer;
-  transition: background-color .2s ease, color .2s ease;
-}
-.tier-arrows button:hover { background: #fff; color: #0b1220; }
-.tier-arrows button:focus-visible { outline: 2px solid #a2e5eb; outline-offset: 2px; }
-.tier-slider.single .tier-bar { display: none; }
-.tier-slider.single figcaption { bottom: 24px; }
-
-.tier-still { min-height: clamp(760px, 44vw, 1100px); }
-.tier-pill {
-  position: absolute;
-  right: 24px;
-  bottom: 24px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 13px 18px;
-  border-radius: 12px;
-  background: rgba(7, 13, 24, .85);
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-  color: #fff;
-  font-size: 14px;
-  text-decoration: none;
-  transition: background-color .2s ease, color .2s ease;
-}
-.tier-pill:hover { background: #fff; color: #0b1220; }
 
 @media (max-width: 1099px) {
-  .tier, .tier.tier-split { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .tier { grid-template-columns: 1fr 1fr; gap: 32px; }
   .tier-card .tier-panel { padding: 36px 28px 28px; }
 }
 @media (max-width: 799px) {
   section.tabs.new.tiers { margin-bottom: 80px; }
   .tiers-list { gap: 72px; margin-top: 40px; }
-  .tier, .tier.tier-split { grid-template-columns: 1fr; gap: 20px; }
-  .tier-split .tier-media { order: -1; } /* image first, as in the other tiers */
-  .tier-media, .tier-still { min-height: 0; aspect-ratio: 4 / 5; }
-  .tier-still { aspect-ratio: 4 / 3; }
+  .tier { grid-template-columns: 1fr; gap: 20px; }
+  .tier-media { min-height: 0; aspect-ratio: 4 / 5; }
   .tier-card .tier-panel { padding: 28px 20px 20px; border-radius: 20px; }
   .tier-panel h4 { margin-bottom: 20px; }
   .tier-panel > p { font-size: 16px; }
@@ -381,12 +273,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   .tier-services summary { padding: 16px; gap: 12px; font-size: 17px; }
   .tier-service-body { padding: 0 16px 16px 50px; }
   .tier-cta { padding: 16px; font-size: 17px; }
-  .tier-slides figcaption { left: 16px; right: 16px; bottom: 80px; gap: 12px; }
-  .tier-foot { flex-direction: column; align-items: flex-start; }
-  .tier-see { display: none; } /* as in Projetos Selecionados: no room on phones */
-  .tier-bar { padding: 12px 12px 12px 16px; }
-  .tier-arrows button { width: 48px; }
-  .tier-pill { right: 16px; bottom: 16px; }
+  .tier-slides figcaption { left: 16px; right: 16px; bottom: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tier-slides figure, .tier-slides figure img,
