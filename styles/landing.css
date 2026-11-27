@@ -20,7 +20,7 @@
 }
 
 /* Thinking 360° — Launch / Experience / Growth as plain text on the page
-   background: name and description on the left, each service a dropdown. */
+   background: name and description on the left, the services on the right. */
 .tabs.packs .packs-list {
   width: 100%;
   margin-top: 48px;
@@ -54,56 +54,21 @@
   line-height: 1.55;
   color: rgba(255, 255, 255, .75);
 }
-.tabs.packs .packs-list details {
-  border-bottom: 1px solid rgba(255, 255, 255, .14);
+.tabs.packs .packs-list header p + p { margin-top: 1em; } /* paragraphs as in the price list */
+.tabs.packs .packs-list ul.services {
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
-.tabs.packs .packs-list details:first-child {
+.tabs.packs .packs-list ul.services li {
+  padding: 14px 0;
   border-top: 1px solid rgba(255, 255, 255, .14);
-}
-.tabs.packs .packs-list summary {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  padding: 16px 0;
   font-size: 18px;
   line-height: 1.35;
-  cursor: pointer;
-  list-style: none;
 }
-.tabs.packs .packs-list summary::-webkit-details-marker { display: none; }
-.tabs.packs .packs-list summary::after {
-  content: "";
-  flex: none;
-  width: 9px;
-  height: 9px;
-  margin: -5px 4px 0 0;
-  border-right: 1.5px solid currentColor;
-  border-bottom: 1.5px solid currentColor;
-  transform: rotate(45deg);
-  opacity: .7;
-  transition: transform .2s ease;
+.tabs.packs .packs-list ul.services li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
 }
-.tabs.packs .packs-list details[open] summary::after {
-  margin-top: 4px;
-  transform: rotate(-135deg);
-}
-.tabs.packs .packs-list summary:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, .6);
-  outline-offset: 2px;
-}
-.tabs.packs .packs-list details > div {
-  padding: 0 32px 20px 0;
-  font-size: 15px;
-  line-height: 1.55;
-  color: rgba(255, 255, 255, .65);
-}
-.tabs.packs .packs-list details > div p { margin: 0; }
-.tabs.packs .packs-list details > div ul {
-  margin: 10px 0 0;
-  padding-left: 18px;
-}
-.tabs.packs .packs-list details > div li { margin: 2px 0; }
 @media (max-width: 799px) {
   .tabs.packs .packs-list { margin-top: 32px; }
   .tabs.packs .packs-list article { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
