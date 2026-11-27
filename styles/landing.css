@@ -2,8 +2,16 @@
    Kept separate so mainnew.css stays identical to viriato.com.pt. */
 
 /* Hero — "Iconic. And sold." + who we are */
+.hero h1 {
+  text-transform: uppercase;
+}
 .hero h1 strong {
   font-weight: 600;
+}
+/* room below the button now that the "Ver projectos" caption is gone */
+.hero section.slides section header ul.actions { margin-bottom: 64px; }
+@media (max-width: 799px) {
+  .hero section.slides section header ul.actions { margin-bottom: 40px; }
 }
 .hero section.slides section header p.lead {
   max-width: 46ch;
@@ -16,64 +24,80 @@
   text-align: center;
 }
 
-/* Thinking 360° — Launch / Growth / Experience as gradient cards */
-.tabs.packs .packs-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+/* Thinking 360° — Launch / Experience / Growth as plain text on the page
+   background: name and description on the left, the services on the right. */
+.tabs.packs .packs-list {
   width: 100%;
   margin-top: 48px;
-}
-.tabs.packs .packs-grid article {
-  display: flex;
-  flex-direction: column;
-  padding: 40px 36px;
-  border-radius: 24px;
-  border: 1px solid rgba(255, 255, 255, .08);
   color: #fff;
 }
-.tabs.packs .packs-grid .launch { background: var(--grad-principal); }
-.tabs.packs .packs-grid .growth { background: var(--grad-orbes); }
-.tabs.packs .packs-grid .experience {
-  background: radial-gradient(90% 80% at 80% 10%, rgba(162, 229, 235, .28), transparent 70%),
-              linear-gradient(160deg, #13263b, #0a1220);
+.tabs.packs .packs-list article {
+  display: grid;
+  grid-template-columns: 5fr 7fr;
+  gap: 24px 64px;
+  align-items: start;
+  padding: 48px 0;
+  border-top: 1px solid rgba(255, 255, 255, .14);
 }
-.tabs.packs .packs-grid h4 {
+.tabs.packs .packs-list article:last-child { padding-bottom: 0; }
+.tabs.packs .packs-list article > header {
+  display: block;
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+.tabs.packs .packs-list h4 {
   margin: 0 0 16px;
   font-size: clamp(36px, 3.1vw, 44px);
   line-height: 1.1;
   font-weight: 400;
   color: #fff;
 }
-.tabs.packs .packs-grid p {
-  min-height: 78px; /* keeps the three lists starting on the same line */
-  margin: 0 0 32px;
+.tabs.packs .packs-list h4 {
+  display: flex;
+  align-items: center;
+}
+/* the rotating orb used before the project names in "Projetos Selecionados" */
+.tabs.packs .packs-list h4 .orb {
+  flex: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 20px;
+  border-radius: 40px;
+  background-color: rgb(var(--c--2));
+  border: 10px solid var(--color-2);
+  border-top-color: rgb(var(--c--4));
+  border-right-color: rgb(var(--c--4));
+  border-bottom-color: rgb(var(--c--2));
+  border-left-color: rgb(var(--c--3));
+  filter: blur(5px);
+  animation: rotate 5s infinite linear;
+}
+.tabs.packs .packs-list header p {
+  margin: 0;
   font-size: 17px;
-  line-height: 1.5;
+  line-height: 1.55;
   color: rgba(255, 255, 255, .75);
 }
-.tabs.packs .packs-grid ul {
+.tabs.packs .packs-list header p + p { margin-top: 1em; } /* paragraphs as in the price list */
+.tabs.packs .packs-list ul.services {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.tabs.packs .packs-grid li {
+.tabs.packs .packs-list ul.services li {
   padding: 14px 0;
   border-top: 1px solid rgba(255, 255, 255, .14);
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.35;
 }
-.tabs.packs .packs-grid li small {
-  display: block;
-  margin-top: 4px;
-  font-size: 14px;
-  line-height: 1.4;
-  color: rgba(255, 255, 255, .55);
+.tabs.packs .packs-list ul.services li:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
 }
 @media (max-width: 799px) {
-  .tabs.packs .packs-grid { grid-template-columns: 1fr; margin-top: 32px; }
-  .tabs.packs .packs-grid article { padding: 28px 24px; }
-  .tabs.packs .packs-grid p { min-height: 0; margin-bottom: 24px; }
+  .tabs.packs .packs-list { margin-top: 32px; }
+  .tabs.packs .packs-list article { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+  .tabs.packs .packs-list h4 { margin-bottom: 12px; }
   /* same 80px before "Fale connosco" as on desktop */
   section.tabs.packs { margin-bottom: 80px; }
 }
@@ -186,48 +210,6 @@ html.lb-open { overflow: hidden; }
   .lb .lb-next { right: 24px; }
 }
 
-/* "Iconic. And sold." — full-bleed cover, as the presentation's first slide
-   (without the logo). Wide image on desktop, square crop on phones. */
-section.cover-iconic {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 5000 / 2818;
-  max-height: 100vh;
-  overflow: hidden;
-  margin: 0; /* the section above already ends with 80px */
-}
-section.cover-iconic picture,
-section.cover-iconic img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-section.cover-iconic::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(20deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, 0) 45%);
-  pointer-events: none;
-}
-section.cover-iconic h2 {
-  position: absolute;
-  z-index: 1;
-  left: 4.5%;
-  bottom: 14.5%;
-  margin: 0;
-  color: rgba(255, 255, 255, .88);
-  font-size: clamp(36px, 5.2vw, 110px);
-  line-height: 1.02;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-section.cover-iconic h2 span,
-section.cover-iconic h2 strong { display: block; }
-section.cover-iconic h2 span { font-weight: 250; }   /* Indivisible Thin */
-section.cover-iconic h2 strong { font-weight: 700; letter-spacing: .09em; }
-
 /* V-SHOW® Villa Heaven — full-bleed tour, loaded on demand (scripts/vshow.js) */
 section.vshow-tour {
   position: relative;
@@ -302,15 +284,12 @@ section.vshow-tour .vshow-open {
   text-decoration: none;
 }
 @media (max-width: 799px) {
-  section.cover-iconic { aspect-ratio: 1200 / 1114; }
-  section.cover-iconic h2 { left: 20px; bottom: 9%; font-size: clamp(34px, 11vw, 56px); }
   /* desktop gets 80px between sections from the page layout; mobile doesn't */
-  section.vshow-tour { height: 80svh; margin: 80px 0; }
+  section.vshow-tour { height: 80svh; margin: 0 0 80px; } /* the services above already end with 80px */
 }
 
-/* Cover, V-SHOW and the contact form: rounded like the site's other cards (hero, projects):
+/* V-SHOW and the contact form: rounded like the site's other cards (hero, projects):
    25px corners, 20px in from the screen edges. */
-section.cover-iconic,
 section.vshow-tour,
 section.contacto {
   width: calc(100% - 40px);
@@ -353,4 +332,13 @@ section.vshow-tour .vshow-hint .touch { display: none; }
 @media (max-width: 799px) {
   /* no room beside "Abrir em ecrã inteiro": sit just above it */
   section.vshow-tour .vshow-shield { padding-bottom: 68px; }
+}
+
+/* Header slides up out of view past the hero (scripts/nav.js) */
+#nav.nav-hidden:not(:focus-within) {
+  transform: translate(-50%, -100%);
+  box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #nav { transition: none; }
 }

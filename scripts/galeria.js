@@ -4,7 +4,8 @@
    The images live in the Marketing Suite gallery (viriato.com.pt/aw/,
    e.g. #vh-1 for Villa Heaven); they are loaded from there one at a time,
    plus the neighbours, never the whole gallery. Slides get the gallery via
-   data-gallery="vh" etc. */
+   data-gallery="vh" etc. Evergreen Pure has no Marketing Suite gallery:
+   its cover plus the two interiors from viriato.com.pt/media/. */
 (function () {
   var GALLERIES = {
     "vh": {
@@ -73,29 +74,12 @@
         "https://viriato.com.pt/aw/images/natv/natv15.webp"
       ]
     },
-    "ap": {
-      "title": "Atlantic Pearl",
+    "ep": {
+      "title": "Evergreen Pure",
       "images": [
-        "https://viriato.com.pt/aw/images/ap/ap0.webp",
-        "https://viriato.com.pt/aw/images/ap/ap1.webp",
-        "https://viriato.com.pt/aw/images/ap/ap2.webp",
-        "https://viriato.com.pt/aw/images/ap/ap3.webp",
-        "https://viriato.com.pt/aw/images/ap/ap4.webp",
-        "https://viriato.com.pt/aw/images/ap/ap5.webp",
-        "https://viriato.com.pt/aw/images/ap/ap6.webp",
-        "https://viriato.com.pt/aw/images/ap/ap7.webp",
-        "https://viriato.com.pt/aw/images/ap/ap8.webp",
-        "https://viriato.com.pt/aw/images/ap/ap9.webp",
-        "https://viriato.com.pt/aw/images/ap/ap10.webp",
-        "https://viriato.com.pt/aw/images/ap/ap11.webp",
-        "https://viriato.com.pt/aw/images/ap/ap12.webp",
-        "https://viriato.com.pt/aw/images/ap/ap13.webp",
-        "https://viriato.com.pt/aw/images/ap/ap14.webp",
-        "https://viriato.com.pt/aw/images/ap/ap15.webp",
-        "https://viriato.com.pt/aw/images/ap/ap16.webp",
-        "https://viriato.com.pt/aw/images/ap/ap17.webp",
-        "https://viriato.com.pt/aw/images/ap/ap18.webp",
-        "https://viriato.com.pt/aw/images/ap/ap19.webp"
+        "/images/evergreen-pure.webp",
+        "https://viriato.com.pt/media/resized/T1---Evergreen-Pure-2000.jpg",
+        "https://viriato.com.pt/media/resized/T2---Evergreen-Pure-2000.jpg"
       ]
     },
     "torre": {
