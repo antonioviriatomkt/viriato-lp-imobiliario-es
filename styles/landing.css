@@ -283,6 +283,9 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
    the full width. Services start closed (scripts/tiers.js). */
 @media (max-width: 799px) {
   section.tabs.new.tiers { margin-bottom: 80px; }
+  /* "Thinking 360°" on one line (a no-break space in the HTML): the
+     header's 40px side padding left too little room on phones */
+  section.tabs.new.tiers > header { padding: 0; }
   .tiers-list { gap: 64px; margin-top: 36px; }
   .tier, .tier.media-right { grid-template-columns: 1fr; gap: 24px; }
   .tier.media-right .tier-media { order: 0; }
