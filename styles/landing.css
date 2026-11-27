@@ -30,7 +30,8 @@
      services as an accordion and the proposal request as the last row;
    - .tier-split = like "CGI Images": text on the page background, one large
      image beside it with a pill button. */
-section.tabs.new.tiers { max-width: 1480px; }
+/* same width and 20px side margins as Projetos Selecionados, at every size */
+section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tiers-list {
   display: flex;
   flex-direction: column;
@@ -216,7 +217,7 @@ section.tabs.new.tiers { max-width: 1480px; }
 .tier-media {
   position: relative;
   align-self: stretch;
-  min-height: 680px;
+  min-height: clamp(680px, 40vw, 1000px); /* grows with the width on large screens */
   border-radius: 25px;
   overflow: hidden;
   background: #070d18;
@@ -342,7 +343,7 @@ section.tabs.new.tiers { max-width: 1480px; }
 .tier-slider.single .tier-bar { display: none; }
 .tier-slider.single figcaption { bottom: 24px; }
 
-.tier-still { min-height: 760px; }
+.tier-still { min-height: clamp(760px, 44vw, 1100px); }
 .tier-pill {
   position: absolute;
   right: 24px;
