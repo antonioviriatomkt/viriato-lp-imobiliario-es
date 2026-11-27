@@ -8,6 +8,11 @@
 .hero h1 strong {
   font-weight: 600;
 }
+/* room below the button now that the "Ver projectos" caption is gone */
+.hero section.slides section header ul.actions { margin-bottom: 64px; }
+@media (max-width: 799px) {
+  .hero section.slides section header ul.actions { margin-bottom: 40px; }
+}
 .hero section.slides section header p.lead {
   max-width: 46ch;
   margin: 24px auto 36px;
@@ -327,4 +332,13 @@ section.vshow-tour .vshow-hint .touch { display: none; }
 @media (max-width: 799px) {
   /* no room beside "Abrir em ecrã inteiro": sit just above it */
   section.vshow-tour .vshow-shield { padding-bottom: 68px; }
+}
+
+/* Header slides up out of view past the hero (scripts/nav.js) */
+#nav.nav-hidden:not(:focus-within) {
+  transform: translate(-50%, -100%);
+  box-shadow: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  #nav { transition: none; }
 }
