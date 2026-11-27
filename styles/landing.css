@@ -46,8 +46,8 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 }
 
 /* the rotating orb used before the project names in "Projetos Selecionados":
-   before each service and each image caption */
-.tier-services summary .orb,
+   in each "Pedir proposta …" button and before each image caption */
+.tier-cta .orb,
 .tier-proj .dot {
   flex: none;
   width: 30px;
@@ -119,7 +119,9 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 }
 .tier-services summary::-webkit-details-marker { display: none; }
 .tier-services summary:focus-visible { outline: 2px solid #a2e5eb; outline-offset: 2px; border-radius: 16px; }
-.tier-services summary .orb {
+.tier-services summary .ico { flex: none; color: rgba(255, 255, 255, .55); }
+.tier-cta-label { display: flex; align-items: center; gap: 16px; }
+.tier-cta .orb {
   width: 22px;
   height: 22px;
   border-width: 7px;
@@ -301,6 +303,8 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   .tier-panel > p { font-size: 16px; line-height: 1.6; }
   .tier-services { gap: 8px; margin-top: 24px; }
   .tier-services details, .tier-cta { border-radius: 14px; }
+  .tier-services summary .ico { width: 20px; height: 20px; }
+  .tier-cta-label { gap: 12px; }
   .tier-services summary { min-height: 56px; padding: 14px 16px; gap: 12px; font-size: 17px; box-sizing: border-box; }
   .tier-service-body { gap: 14px; padding: 0 16px 16px 48px; }
   .tier-service-body p { font-size: 15px; }
@@ -310,7 +314,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   .tier-proj, .tier-proj small { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .tier-services summary .orb, .tier-proj .dot { animation: none; }
+  .tier-cta .orb, .tier-proj .dot { animation: none; }
   .tier-slides figure, .tier-slides figure img,
   .tier-services details::details-content { transition: none; }
 }
