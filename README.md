@@ -28,6 +28,7 @@ Os caminhos são os mesmos do site em produção:
 | `fonts/indivisible/` + `styles/fonts.css` | Indivisible (Thin, Regular, Bold) — substitui a DM Sans de produção. O peso 300 usa a Regular: a Thin é demasiado fina em texto corrido |
 | `styles/landing.css` | Alterações da landing (hero, Thinking 360° Launch/Experience/Growth) por cima do `mainnew.css`, que se mantém igual ao de produção |
 | `scripts/tiers.js` | Thinking 360°: imagens de cada pack que mudam sozinhas (5 s, param com o rato por cima; deslizar no telemóvel), acordeão de serviços (um aberto de cada vez; no telemóvel começam fechados) e "Pedir proposta …", que pré-seleciona o pack no formulário. Só descarrega a imagem visível e a seguinte. Layout dos serviços da homepage do viriato.com.pt (V-SHOW®), imagem e texto alternados; as imagens são provisórias |
+| `scripts/projetos.js` | Projetos Selecionados: arrastar com o dedo para mudar de projeto (telemóvel e tablet). Usa o slider do `main.js` (`hero.nav`), por isso o autoplay e a barra de progresso continuam iguais. No telemóvel as setas estão escondidas |
 | `images/tiers/` | Versões das imagens do Thinking 360° em 640/1080/1600/2200 px (webp, `srcset`): o telemóvel recebe ~1080 px em vez de 2400 px. Ao trocar uma imagem, gerar as mesmas larguras |
 | `scripts/galeria.js` | Popup de imagens dos Projetos Selecionados. As listas de imagens vêm da galeria da Marketing Suite (`viriato.com.pt/aw/`, ex. `#vh-1`); as imagens carregam de lá, uma de cada vez. Evergreen Village e Evergreen Pure não têm galeria |
 
