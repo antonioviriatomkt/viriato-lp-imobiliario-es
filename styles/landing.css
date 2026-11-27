@@ -185,48 +185,6 @@ html.lb-open { overflow: hidden; }
   .lb .lb-next { right: 24px; }
 }
 
-/* "Iconic. And sold." — full-bleed cover, as the presentation's first slide
-   (without the logo). Wide image on desktop, square crop on phones. */
-section.cover-iconic {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 5000 / 2818;
-  max-height: 100vh;
-  overflow: hidden;
-  margin: 0; /* the section above already ends with 80px */
-}
-section.cover-iconic picture,
-section.cover-iconic img {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-section.cover-iconic::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(20deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, 0) 45%);
-  pointer-events: none;
-}
-section.cover-iconic h2 {
-  position: absolute;
-  z-index: 1;
-  left: 4.5%;
-  bottom: 14.5%;
-  margin: 0;
-  color: rgba(255, 255, 255, .88);
-  font-size: clamp(36px, 5.2vw, 110px);
-  line-height: 1.02;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-}
-section.cover-iconic h2 span,
-section.cover-iconic h2 strong { display: block; }
-section.cover-iconic h2 span { font-weight: 400; }   /* Indivisible Regular */
-section.cover-iconic h2 strong { font-weight: 700; letter-spacing: .09em; }
-
 /* V-SHOW® Villa Heaven — full-bleed tour, loaded on demand (scripts/vshow.js) */
 section.vshow-tour {
   position: relative;
@@ -301,15 +259,12 @@ section.vshow-tour .vshow-open {
   text-decoration: none;
 }
 @media (max-width: 799px) {
-  section.cover-iconic { aspect-ratio: 1200 / 1114; }
-  section.cover-iconic h2 { left: 20px; bottom: 9%; font-size: clamp(34px, 11vw, 56px); }
   /* desktop gets 80px between sections from the page layout; mobile doesn't */
-  section.vshow-tour { height: 80svh; margin: 80px 0; }
+  section.vshow-tour { height: 80svh; margin: 0 0 80px; } /* the services above already end with 80px */
 }
 
-/* Cover, V-SHOW and the contact form: rounded like the site's other cards (hero, projects):
+/* V-SHOW and the contact form: rounded like the site's other cards (hero, projects):
    25px corners, 20px in from the screen edges. */
-section.cover-iconic,
 section.vshow-tour,
 section.contacto {
   width: calc(100% - 40px);
