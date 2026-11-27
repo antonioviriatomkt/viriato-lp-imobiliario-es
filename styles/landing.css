@@ -111,6 +111,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   padding: 18px 22px;
   cursor: pointer;
   list-style: none;
+  -webkit-tap-highlight-color: transparent;
   font-size: 19px;
   line-height: 1.3;
   color: #fff;
@@ -139,7 +140,9 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 }
 .tier-services .tog::after { transform: rotate(90deg); transition: transform .3s ease; }
 .tier-services details[open] .tog::after { transform: rotate(0); }
-.tier-services summary:hover .tog { opacity: .8; }
+@media (hover: hover) {
+  .tier-services summary:hover .tog { opacity: .8; }
+}
 .tier-service-body {
   display: flex;
   flex-direction: column;
@@ -177,7 +180,9 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   text-decoration: none;
   transition: background-color .2s ease, color .2s ease;
 }
-.tier-more:hover { background: #fff; color: #0b1220; }
+@media (hover: hover) {
+  .tier-more:hover { background: #fff; color: #0b1220; }
+}
 .tier-cta {
   display: flex;
   align-items: center;
@@ -194,8 +199,10 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   transition: background-color .2s ease, color .2s ease;
 }
 .tier-cta svg { width: 22px; height: 22px; transition: transform .2s ease; }
-.tier-cta:hover { background: #fff; color: #0b1220; }
-.tier-cta:hover svg { transform: translateX(4px); }
+@media (hover: hover) {
+  .tier-cta:hover { background: #fff; color: #0b1220; }
+  .tier-cta:hover svg { transform: translateX(4px); }
+}
 
 /* ---- image side ---- */
 .tier-media {
@@ -213,7 +220,7 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
   height: 100%;
   object-fit: cover;
 }
-.tier-slides { position: absolute; inset: 0; }
+.tier-slides { position: absolute; inset: 0; touch-action: pan-y; } /* horizontal swipes change the image */
 .tier-slides figure {
   position: absolute;
   inset: 0;
@@ -257,23 +264,42 @@ section.tabs.new.tiers { max-width: none; width: 100%; padding: 0 20px; }
 .tier-proj .sep { opacity: .7; font-size: 10px; }
 .tier-proj small { font-size: 14px; letter-spacing: 0; text-transform: none; }
 
+/* Experience: image on the right, so the tiers alternate */
+.tier.media-right { grid-template-columns: 5fr 7fr; }
+.tier.media-right .tier-media { order: 2; }
 @media (max-width: 1099px) {
-  .tier { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .tier, .tier.media-right { grid-template-columns: 1fr 1fr; gap: 32px; }
   .tier-card .tier-panel { padding: 36px 28px 28px; }
 }
+/* Phones (most of this page's traffic): one column, image always above the
+   text, a shorter image, and the card's frame dropped so the services get
+   the full width. Services start closed (scripts/tiers.js). */
 @media (max-width: 799px) {
   section.tabs.new.tiers { margin-bottom: 80px; }
-  .tiers-list { gap: 72px; margin-top: 40px; }
-  .tier { grid-template-columns: 1fr; gap: 20px; }
-  .tier-media { min-height: 0; aspect-ratio: 4 / 5; }
-  .tier-card .tier-panel { padding: 28px 20px 20px; border-radius: 20px; }
-  .tier-panel h4 { margin-bottom: 20px; }
-  .tier-panel > p { font-size: 16px; }
-  .tier-services { margin-top: 28px; }
-  .tier-services summary { padding: 16px; gap: 12px; font-size: 17px; }
-  .tier-service-body { padding: 0 16px 16px 50px; }
-  .tier-cta { padding: 16px; font-size: 17px; }
-  .tier-slides figcaption { left: 16px; right: 16px; bottom: 16px; }
+  .tiers-list { gap: 64px; margin-top: 36px; }
+  .tier, .tier.media-right { grid-template-columns: 1fr; gap: 24px; }
+  .tier.media-right .tier-media { order: 0; }
+  .tier-media { min-height: 0; aspect-ratio: 4 / 3; border-radius: 20px; }
+  .tier-card .tier-panel {
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    background: none;
+    box-shadow: none;
+  }
+  .tier-panel h4 { gap: 16px; margin-bottom: 16px; font-size: 36px; }
+  .tier-panel h4 .orb { width: 24px; height: 24px; border-width: 8px; }
+  .tier-panel > p { font-size: 16px; line-height: 1.6; }
+  .tier-services { gap: 8px; margin-top: 24px; }
+  .tier-services details, .tier-cta { border-radius: 14px; }
+  .tier-services summary { min-height: 56px; padding: 14px 16px; gap: 12px; font-size: 17px; box-sizing: border-box; }
+  .tier-services summary .ico { width: 20px; height: 20px; }
+  .tier-service-body { gap: 14px; padding: 0 16px 16px 48px; }
+  .tier-service-body p { font-size: 15px; }
+  .tier-more { min-height: 44px; box-sizing: border-box; padding: 0 16px 0 18px; }
+  .tier-cta { min-height: 56px; margin-top: 8px; padding: 14px 16px; font-size: 17px; box-sizing: border-box; }
+  .tier-slides figcaption { left: 16px; right: 16px; bottom: 14px; }
+  .tier-proj, .tier-proj small { font-size: 13px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .tier-slides figure, .tier-slides figure img,
